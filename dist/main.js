@@ -16,7 +16,17 @@
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__),\n/* harmony export */   venture: () => (/* binding */ venture)\n/* harmony export */ });\nconst venture = [];\n\nclass Task {\n    constructor(name, dueDate, priority, notes) {\n        this.name = name;\n        this.dueDate = dueDate;\n        this.priority = priority;\n        this.notes = notes;\n    }\n}\n\nfunction createTask (name, dueDate, priority, notes) {\n    let task = new Task(name, dueDate, priority, notes);\n    venture.push(task);\n}\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createTask);\n\n\n//# sourceURL=webpack://venture-todo-list/./src/create-task.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _ventures__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ventures */ \"./src/ventures.js\");\n\n\nclass Task {\n    constructor (taskName, dueDate, important, notes) {\n        this.taskName = taskName;\n        this.dueDate = dueDate;\n        this.isImportant = important;\n        this.notes = notes;\n    }\n}\n\nfunction createTask (name, dueDate, important, notes) {\n    let task = new Task (name, dueDate, important, notes);\n    _ventures__WEBPACK_IMPORTED_MODULE_0__.venturesArray[0].tasks.push(task);\n    console.log(_ventures__WEBPACK_IMPORTED_MODULE_0__.venturesArray);\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createTask);\n\n\n//# sourceURL=webpack://venture-todo-list/./src/create-task.js?");
+
+/***/ }),
+
+/***/ "./src/create-venture.js":
+/*!*******************************!*\
+  !*** ./src/create-venture.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _ventures__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ventures */ \"./src/ventures.js\");\n\n\nclass Venture {\n    constructor(ventureName) {\n        this.ventureName = ventureName;\n        this.tasks = [];\n    }\n}\n\n\nfunction createVenture (ventureName) {\n    let venture = new Venture (ventureName);\n    _ventures__WEBPACK_IMPORTED_MODULE_0__.venturesArray.push(venture);\n    console.log(_ventures__WEBPACK_IMPORTED_MODULE_0__.venturesArray);\n}\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createVenture);\n\n//# sourceURL=webpack://venture-todo-list/./src/create-venture.js?");
 
 /***/ }),
 
@@ -26,7 +36,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _create_task_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./create-task.js */ \"./src/create-task.js\");\n\n\n\nlet addTaskBttn = document.querySelector('.bttn-add-task');\naddTaskBttn.addEventListener('click', () => {\n    (0,_create_task_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('Test', '07/11/24', 3, 'No notes for me.')\n    console.log(_create_task_js__WEBPACK_IMPORTED_MODULE_0__.venture);\n});\n\n\n//# sourceURL=webpack://venture-todo-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _create_venture__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./create-venture */ \"./src/create-venture.js\");\n/* harmony import */ var _create_task__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./create-task */ \"./src/create-task.js\");\n\n\n\n\nlet bttnAddVenture = document.querySelector('.bttn-add-venture');\nlet bttnAddTask = document.querySelector('.bttn-add-task');\n\nbttnAddVenture.addEventListener('click', () => {\n    let ventureName = prompt('What should the name for this venture be?')\n    ;(0,_create_venture__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(ventureName);\n})\n\nbttnAddTask.addEventListener('click', () => {\n    let taskName = prompt('Enter the task name');\n    let taskDate = prompt('Enter the task due date (mm/dd/yy)');\n    let taskImportant = prompt('Is this task of high important? True or false.');\n    let taskNotes = prompt('Enter any notes for this task');\n    (0,_create_task__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(taskName, taskDate, taskImportant, taskNotes);\n})\n\n//# sourceURL=webpack://venture-todo-list/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/ventures.js":
+/*!*************************!*\
+  !*** ./src/ventures.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   venturesArray: () => (/* binding */ venturesArray)\n/* harmony export */ });\nlet venturesArray = [];\n\n\n\n//# sourceURL=webpack://venture-todo-list/./src/ventures.js?");
 
 /***/ })
 

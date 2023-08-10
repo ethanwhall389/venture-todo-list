@@ -1,18 +1,18 @@
-export const venture = [];
+import { venturesArray } from "./ventures";
 
 class Task {
-    constructor(name, dueDate, priority, notes) {
-        this.name = name;
+    constructor (taskName, dueDate, important, notes) {
+        this.taskName = taskName;
         this.dueDate = dueDate;
-        this.priority = priority;
+        this.isImportant = important;
         this.notes = notes;
     }
 }
 
-function createTask (name, dueDate, priority, notes) {
-    let task = new Task(name, dueDate, priority, notes);
-    venture.push(task);
+function createTask (name, dueDate, important, notes) {
+    let task = new Task (name, dueDate, important, notes);
+    venturesArray[0].tasks.push(task);
+    console.log(venturesArray);
 }
-
 
 export default createTask;
