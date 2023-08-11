@@ -1,0 +1,70 @@
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 20px;
+}
+
+header {
+    height: 50px;
+    padding: 0 20px;
+    background-color: rgb(100, 101, 167);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 20px;
+    flex-grow: 1;
+}
+
+.options-panel {
+    width: 250px;
+    max-width: 350px;
+    background-color: aquamarine;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+h2 {
+    margin: 0 0 20px 0;
+    font-size: 1.2em;
+}
+
+.venture-panel {
+    background-color: aquamarine;
+    flex-grow: 1;
+    min-width: 350px;
+}
+
+.panel {
+    border-radius: 15px;
+    padding: 15px 20px;
+}
+
+hr { 
+    color: gray; 
+    border-style: inset; 
+    border-width: 0.5px; 
+    border-radius: 15px;
+    margin: 0.5em auto; 
+    width: 100%
+}
+
+footer {
+    height: 40px;
+    background-color: rgb(100, 101, 167);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
