@@ -1,4 +1,5 @@
 import { venturesArray } from "./ventures";
+import { appendToDom } from "./dom-control";
 
 class Venture {
     constructor(ventureName) {
@@ -8,9 +9,10 @@ class Venture {
 }
 
 
+
 function createVenture (ventureName) {
-    let venture = new Venture (ventureName);
-    venturesArray.push(venture);
+    venturesArray.push(new Venture (ventureName));
+    appendToDom.appendVenture(ventureName);
     console.log(venturesArray);
 }
 

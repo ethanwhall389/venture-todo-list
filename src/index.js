@@ -1,9 +1,12 @@
-
 import createVenture from "./create-venture";
 import createTask from "./create-task";
 
-let bttnAddVenture = document.querySelector('.bttn-add-venture');
-let bttnAddTask = document.querySelector('.bttn-add-task');
+let currentSelectedVenture;
+
+//need to add a query selector to all ventures that have a class of 'venture'.
+
+let bttnAddVenture = document.querySelector('.new-venture-bttn');
+let bttnAddTask = document.querySelector('.new-task-bttn');
 
 bttnAddVenture.addEventListener('click', () => {
     let ventureName = prompt('What should the name for this venture be?')
