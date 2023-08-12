@@ -1,4 +1,7 @@
-
+function changeElementText (elementToGrab, newText) {
+    let element = document.querySelector(elementToGrab);
+    element.textContent = newText;
+}
 
 const appendToDom = (() => {
 
@@ -18,4 +21,4 @@ const appendToDom = (() => {
 })();
 
 
-module.exports = { appendToDom };
+module.exports = { appendToDom, changeElementText };

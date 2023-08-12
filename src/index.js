@@ -1,8 +1,7 @@
 import createVenture from "./create-venture";
 import createTask from "./create-task";
 import CurrentVenture from "./ventures";
-
-// let currentSelectedVenture = 'nothing';
+import { changeElementText } from "./dom-control";
 
 
 let bttnAddVenture = document.querySelector('.new-venture-bttn');
@@ -28,8 +27,10 @@ const optionsPanel = document.querySelector('.options-panel');
 optionsPanel.addEventListener('click', (event) => {
     if (event.target.classList.contains('venture')) {
         CurrentVenture.updateSelectedVenture(event.target.getAttribute('data-name'));
-        // currentSelectedVenture = event.target.getAttribute('data-name');
         console.log(`Current selected venture: ${CurrentVenture.getCurrentSelectedVenture()}`);
+
+        changeElementText('.venture-panel-title', CurrentVenture.getCurrentSelectedVenture());
+        //update DOM
     }
 })
 
