@@ -1,7 +1,7 @@
-function changeElementText (elementToGrab, newText) {
-    let element = document.querySelector(elementToGrab);
-    element.textContent = newText;
-}
+import { venturesArray } from "./ventures";
+
+let tasksContainer = document.querySelector('.tasks-section');
+
 
 const appendToDom = (() => {
 
@@ -14,11 +14,54 @@ const appendToDom = (() => {
         venturesContainer.appendChild(newVenture);
     }
 
+    const appendTask = (name) => {
+        
+        let newTaskDiv = document.createElement('div');
+        newTaskDiv.classList.add('task-div');
+
+        let checkBox = document.createElement('div');
+        checkBox.classList.add('task-checkbox');
+        
+        let newTaskTitle = document.createElement('p');
+        newTaskTitle.textContent = name;
+        
+
+        tasksContainer.appendChild(newTaskDiv);
+        newTaskDiv.appendChild(checkBox);
+        newTaskDiv.appendChild(newTaskTitle);
+    }
+
     return {
-        appendVenture
+        appendVenture,
+        appendTask
     };
 
 })();
 
 
-module.exports = { appendToDom, changeElementText };
+function changeElementText (elementToGrab, newText) {
+    let element = document.querySelector(elementToGrab);
+    element.textContent = newText;
+}
+
+
+function displayTasks (currentVenture) {
+    tasksContainer.textContent = '';
+    let currentVentureIndex = venturesArray.findIndex((element) => element.ventureName === currentVenture);
+    if (currentVentureIndex != -1) {
+        let tasksArray = venturesArray[currentVentureIndex].tasks;
+        if (tasksArray.length >= 1) {
+            tasksArray.forEach(element => {
+                appendToDom.appendTask(element.taskName);
+            });
+        }
+    } else {
+        console.log('the displayTasks function currentVentureIndex returned ' + currentVentureIndex);
+        return;
+    }
+}
+
+
+
+
+export { appendToDom, changeElementText, displayTasks };
