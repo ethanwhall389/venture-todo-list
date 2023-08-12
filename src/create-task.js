@@ -15,7 +15,7 @@ function createTask (name, dueDate, important, notes) {
     let task = new Task (name, dueDate, important, notes);
     // push to the index of the currentSelectedVenture
     // const index = (element) => element === CurrentVenture.getCurrentSelectedVenture;
-    let currentVentureIndex = venturesArray.findIndex((element) => element === CurrentVenture.currentSelectedVenture);
+    let currentVentureIndex = venturesArray.findIndex((element) => element.ventureName === CurrentVenture.currentSelectedVenture);
     venturesArray[currentVentureIndex].tasks.push(task);
     console.log(venturesArray);
 }
