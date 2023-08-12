@@ -1,4 +1,6 @@
 import { venturesArray } from "./ventures";
+import CurrentVenture from "./ventures";
+// import currentSelectedVenture from "./index";
 
 class Task {
     constructor (taskName, dueDate, important, notes) {
@@ -11,8 +13,12 @@ class Task {
 
 function createTask (name, dueDate, important, notes) {
     let task = new Task (name, dueDate, important, notes);
-    venturesArray[0].tasks.push(task);
+    // push to the index of the currentSelectedVenture
+    // const index = (element) => element === CurrentVenture.getCurrentSelectedVenture;
+    let currentVentureIndex = venturesArray.findIndex((element) => element === CurrentVenture.currentSelectedVenture);
+    venturesArray[currentVentureIndex].tasks.push(task);
     console.log(venturesArray);
 }
+
 
 export default createTask;

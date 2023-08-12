@@ -1,9 +1,9 @@
 import createVenture from "./create-venture";
 import createTask from "./create-task";
+import CurrentVenture from "./ventures";
 
-let currentSelectedVenture;
+// let currentSelectedVenture = 'nothing';
 
-//need to add a query selector to all ventures that have a class of 'venture'.
 
 let bttnAddVenture = document.querySelector('.new-venture-bttn');
 let bttnAddTask = document.querySelector('.new-task-bttn');
@@ -20,3 +20,18 @@ bttnAddTask.addEventListener('click', () => {
     let taskNotes = prompt('Enter any notes for this task');
     createTask(taskName, taskDate, taskImportant, taskNotes);
 })
+
+
+
+// Set the current venture when a venture is clicked in the sidebar.
+const optionsPanel = document.querySelector('.options-panel');
+optionsPanel.addEventListener('click', (event) => {
+    if (event.target.classList.contains('venture')) {
+        CurrentVenture.updateSelectedVenture(event.target.getAttribute('data-name'));
+        // currentSelectedVenture = event.target.getAttribute('data-name');
+        console.log(`Current selected venture: ${CurrentVenture.getCurrentSelectedVenture()}`);
+    }
+})
+
+
+// export default currentSelectedVenture;
