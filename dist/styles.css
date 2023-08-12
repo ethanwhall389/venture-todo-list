@@ -47,6 +47,28 @@ h2 {
     min-width: 350px;
 }
 
+.tasks-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.task-div {
+    background-color: white;
+    border-radius: 15px;
+    padding: 7px 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.task-checkbox {
+    background-color: black;
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+}
+
 .panel {
     border-radius: 15px;
     padding: 15px 20px;
