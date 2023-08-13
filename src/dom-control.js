@@ -55,6 +55,10 @@ const appendToDom = (() => {
 
 })();
 
+function changeIcon (iconToGrab, newIconPath) {
+    iconToGrab.setAttribute('src', newIconPath);
+}
+
 
 function changeElementText (elementToGrab, newText) {
     let element = document.querySelector(elementToGrab);
@@ -81,4 +85,4 @@ function displayTasks (currentVenture) {
 
 
 
-export { appendToDom, changeElementText, displayTasks };
+export { appendToDom, changeElementText, displayTasks, changeIcon };

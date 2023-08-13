@@ -1,7 +1,7 @@
 import createVenture from "./create-venture";
 import createTask from "./create-task";
 import CurrentVenture from "./ventures";
-import { changeElementText, displayTasks } from "./dom-control";
+import { changeElementText, displayTasks, changeIcon } from "./dom-control";
 
 
 let bttnAddVenture = document.querySelector('.new-venture-bttn');
@@ -31,6 +31,8 @@ optionsPanel.addEventListener('click', (event) => {
         console.log(`Current selected venture: ${CurrentVenture.getCurrentSelectedVenture()}`);
 
         //update DOM
+        console.log(event.target);
+        changeIcon(event.target, 'icons/folder-opened.svg');
         changeElementText('.venture-panel-title', CurrentVenture.getCurrentSelectedVenture());
 
         //Display all of the venture's tasks
