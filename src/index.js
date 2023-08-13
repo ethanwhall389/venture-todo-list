@@ -25,7 +25,7 @@ bttnAddTask.addEventListener('click', () => {
 // Set the current venture when a venture is clicked in the sidebar.
 const optionsPanel = document.querySelector('.options-panel');
 optionsPanel.addEventListener('click', (event) => {
-    if (event.target.classList.contains('venture')) {
+    if (event.target.classList.contains('venture-bttn')) {
         // set the current venture
         CurrentVenture.updateSelectedVenture(event.target.getAttribute('data-name'));
         console.log(`Current selected venture: ${CurrentVenture.getCurrentSelectedVenture()}`);

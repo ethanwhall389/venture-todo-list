@@ -7,11 +7,28 @@ const appendToDom = (() => {
 
     const appendVenture = (name) => {
         let venturesContainer = document.querySelector('.ventures-section');
-        let newVenture = document.createElement('h3');
-        newVenture.textContent = name;
-        newVenture.classList.add('venture')
-        newVenture.setAttribute('data-name', name);
-        venturesContainer.appendChild(newVenture);
+        
+        let ventureDiv = document.createElement('div');
+        ventureDiv.classList.add('venture-div');
+        ventureDiv.classList.add('venture-bttn');
+        ventureDiv.classList.add('bttn');
+        ventureDiv.setAttribute('data-name', name);
+
+        let icon = document.createElement('img');
+        icon.classList.add('folder-icon');
+        icon.classList.add('venture-bttn');
+        icon.setAttribute('src', 'icons/folder.svg');
+        icon.setAttribute('data-name', name);
+
+        let ventureTitle = document.createElement('p');
+        ventureTitle.classList.add('venture-bttn');
+        ventureTitle.textContent = name;
+        ventureTitle.setAttribute('data-name', name);
+
+        venturesContainer.appendChild(ventureDiv);
+        ventureDiv.appendChild(icon);
+        ventureDiv.appendChild(ventureTitle);
+
     }
 
     const appendTask = (name) => {
