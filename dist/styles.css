@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 
+.light-mode {
+    --main-bg-color: #C8EFF9;
+    --panel-color: #55Bdca;
+    --header-footer-color: #022449;
+    --main-font-color: white;
+    --accent-color: #f27d42;
+    --hover-accent-color: #f27d4289;
+}
+
+
+/* .dark-mode {
+
+} */
+
 
 body {
     height: 100vh;
@@ -7,6 +21,7 @@ body {
     flex-direction: column;
     gap: 20px;
     font-size: 20px;
+    color: var(--main-font-color);
     font-family: 'Lato', sans-serif;
     box-sizing: border-box;
 }
@@ -14,7 +29,7 @@ body {
 header {
     height: 50px;
     padding: 0 20px;
-    background-color: rgb(100, 101, 167);
+    background-color: var(--header-footer-color);
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -39,7 +54,7 @@ header {
 .options-panel {
     width: 250px;
     max-width: 350px;
-    background-color: aquamarine;
+    background-color: var(--panel-color);
     display: flex;
     flex-grow: 1;
     flex-direction: column;
@@ -52,7 +67,7 @@ header {
 }
 
 hr { 
-    color: gray; 
+    color: var(--header-footer-color); 
     border-style: inset; 
     border-width: 0.5px; 
     border-radius: 15px;
@@ -76,7 +91,7 @@ hr {
 
 .bttn:hover {
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--accent-color);
 }
 
 .venture-div {
@@ -97,7 +112,7 @@ hr {
 
 
 .venture-panel {
-    background-color: aquamarine;
+    background-color: var(--panel-color);
     flex-grow: 1;
     min-width: 350px;
 }
@@ -118,8 +133,8 @@ hr {
 }
 
 .task-div {
-    background-color: white;
-    border: 3px solid white;
+    background-color: var(--accent-color);
+    border: 3px solid var(--accent-color);
     border-radius: 10px;
     padding: 7px 10px;
     display: flex;
@@ -129,7 +144,7 @@ hr {
 }
 
 .task-div:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--hover-accent-color);
     cursor: pointer;
 }
 
@@ -138,7 +153,7 @@ hr {
 }
 
 .task-checkbox {
-    border: 2px solid black;
+    border: 2px solid var(--header-footer-color);
     width: 15px;
     height: 15px;
     border-radius: 100%;
@@ -146,7 +161,7 @@ hr {
 }
 
 .task-checkbox:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--header-footer-color);
 }
 
 .task-menu {
@@ -163,8 +178,14 @@ hr {
 
 footer {
     height: 40px;
-    background-color: rgb(100, 101, 167);
+    background-color: var(--header-footer-color);
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 0.9em;
+}
+
+a, a:link, a:visited {
+    text-decoration: none;
+    color: var(--accent-color);
 }
