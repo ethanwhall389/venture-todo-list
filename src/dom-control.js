@@ -35,11 +35,15 @@ const appendToDom = (() => {
         
         let newTaskDiv = document.createElement('div');
         newTaskDiv.classList.add('task-div');
+        newTaskDiv.classList.add('task');
+        newTaskDiv.setAttribute('data-name', name);
 
         let checkBox = document.createElement('div');
         checkBox.classList.add('task-checkbox');
+        checkBox.classList.add('task');
         
         let newTaskTitle = document.createElement('p');
+        newTaskTitle.classList.add('task');
         newTaskTitle.textContent = name;
         
 
@@ -50,28 +54,39 @@ const appendToDom = (() => {
 
     let isMenu = false;
 
-    const createOptionsMenu = (x, y) => {
+    const createOptionsMenu = (mouseX, mouseY, arrayOfOptions, type) => {
         closeOptionsMenu();
         const menuDiv = document.createElement('div');
         menuDiv.classList.add('options-menu-div');
 
         const menuList = document.createElement('ul');
-        const editVenture = document.createElement('li');
-        editVenture.classList.add('edit-venture');
-        editVenture.textContent = 'Edit';
-
-        const deleteVenture = document.createElement('li');
-        deleteVenture.classList.add('delete-venture');
-        deleteVenture.textContent = 'Delete';
 
         document.body.appendChild(menuDiv);
         menuDiv.appendChild(menuList);
-        menuList.appendChild(editVenture);
-        menuList.appendChild(deleteVenture);
+        
+        arrayOfOptions.forEach(option => {
+            let item = document.createElement('li');
+            item.textContent = option;
+            let lowerCaseOption = option.toLowerCase();
+            item.classList.add(`${lowerCaseOption}-${type}`);
+            menuList.appendChild(item);
+        })
+
+        // const editVenture = document.createElement('li');
+        // editVenture.classList.add('edit-venture');
+        // editVenture.textContent = 'Edit';
+
+        // const deleteVenture = document.createElement('li');
+        // deleteVenture.classList.add('delete-venture');
+        // deleteVenture.textContent = 'Delete';
+
+        
+        // menuList.appendChild(editVenture);
+        // menuList.appendChild(deleteVenture);
 
         menuDiv.style.display = 'block';
-        menuDiv.style.left = x + 'px';
-        menuDiv.style.top = y + 'px';
+        menuDiv.style.left = mouseX + 'px';
+        menuDiv.style.top = mouseY + 'px';
 
         isMenu = true;
     }

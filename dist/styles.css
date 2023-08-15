@@ -47,19 +47,28 @@ header {
     flex-grow: 1;
 }
 
+/* Right click menu */
+
+.options-menu-div {
+    padding: 10px 15px 10px 10px;
+    position: absolute;
+    color: black;
+    font-weight: 400;
+    background: var(--main-bg-color);
+    border: 3px solid var(--header-footer-color);
+    border-radius: 10px;
+    display: none;
+}
+
+.options-menu-div li:hover {
+    cursor: pointer;
+    color: var(--accent-color);
+}
+
 
 /* Options panel */
 
 
-.options-menu-div {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    color: black;
-    background: white;
-    border: 1px solid black;
-    display: none;
-}
 
 .options-panel {
     width: 250px;

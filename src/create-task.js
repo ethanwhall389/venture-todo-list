@@ -24,5 +24,18 @@ function createTask (name, dueDate, important, notes) {
 
 }
 
+function deleteTask (name) {
+    let currentVentureIndex = venturesArray.findIndex((element) => element.ventureName === CurrentVenture.getCurrentSelectedVenture());
+    let taskIndex = venturesArray[currentVentureIndex].tasks.findIndex((element) => element.taskName === name);
+    venturesArray[currentVentureIndex].tasks.splice(taskIndex, 1);
 
-export default createTask;
+    console.log(venturesArray);
+
+    displayTasks(CurrentVenture.getCurrentSelectedVenture());
+}
+
+
+export {
+    createTask,
+    deleteTask
+}

@@ -1,5 +1,5 @@
 import createVenture from "./create-venture";
-import createTask from "./create-task";
+import { createTask, deleteTask } from "./create-task";
 import CurrentVenture from "./ventures";
 import { appendToDom, changeElementText, displayTasks, changeIcon } from "./dom-control";
 
@@ -40,12 +40,17 @@ optionsPanel.addEventListener('click', (event) => {
 })
 
 
-// show options when a venture is right clicked
-optionsPanel.addEventListener('contextmenu', (event) => {
+// show options when a venture or task is right clicked
+let dataName;
+window.addEventListener('contextmenu', (event) => {
     if (event.target.classList.contains('venture-bttn')) {
         event.preventDefault();
-        appendToDom.createOptionsMenu(event.clientX, event.clientY);
+        appendToDom.createOptionsMenu(event.clientX, event.clientY, ['Rename', 'Delete'], 'venture');
+    } else if (event.target.classList.contains('task')) {
+        event.preventDefault();
+        appendToDom.createOptionsMenu(event.clientX, event.clientY, ['Edit', 'Delete'], 'task')
     }
+    dataName = event.target.getAttribute('data-name');
 })
 
 //remove menu 
@@ -54,4 +59,12 @@ document.addEventListener('click', () => {
 })
 
 
-// export default currentSelectedVenture;
+// delete a task when delete menu option is chosen
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('delete-task')) {
+        console.log('delete clicked')
+        deleteTask(dataName);
+    }
+    
+    
+})
