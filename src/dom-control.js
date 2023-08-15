@@ -48,9 +48,47 @@ const appendToDom = (() => {
         newTaskDiv.appendChild(newTaskTitle);
     }
 
+    let isMenu = false;
+
+    const createOptionsMenu = (x, y) => {
+        closeOptionsMenu();
+        const menuDiv = document.createElement('div');
+        menuDiv.classList.add('options-menu-div');
+
+        const menuList = document.createElement('ul');
+        const editVenture = document.createElement('li');
+        editVenture.classList.add('edit-venture');
+        editVenture.textContent = 'Edit';
+
+        const deleteVenture = document.createElement('li');
+        deleteVenture.classList.add('delete-venture');
+        deleteVenture.textContent = 'Delete';
+
+        document.body.appendChild(menuDiv);
+        menuDiv.appendChild(menuList);
+        menuList.appendChild(editVenture);
+        menuList.appendChild(deleteVenture);
+
+        menuDiv.style.display = 'block';
+        menuDiv.style.left = x + 'px';
+        menuDiv.style.top = y + 'px';
+
+        isMenu = true;
+    }
+
+    const closeOptionsMenu = () => {
+        if (isMenu === true) {
+            let menu = document.querySelector('.options-menu-div');
+            document.body.removeChild(menu);
+            isMenu = false
+        }
+    }
+
     return {
         appendVenture,
-        appendTask
+        appendTask,
+        createOptionsMenu,
+        closeOptionsMenu
     };
 
 })();
@@ -85,4 +123,8 @@ function displayTasks (currentVenture) {
 
 
 
-export { appendToDom, changeElementText, displayTasks, changeIcon };
+export { appendToDom,
+    changeElementText,
+    displayTasks,
+    changeIcon,
+};

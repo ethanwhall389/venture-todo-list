@@ -1,7 +1,7 @@
 import createVenture from "./create-venture";
 import createTask from "./create-task";
 import CurrentVenture from "./ventures";
-import { changeElementText, displayTasks, changeIcon } from "./dom-control";
+import { appendToDom, changeElementText, displayTasks, changeIcon } from "./dom-control";
 
 
 let bttnAddVenture = document.querySelector('.new-venture-bttn');
@@ -22,7 +22,7 @@ bttnAddTask.addEventListener('click', () => {
 
 
 
-// Set the current venture when a venture is clicked in the sidebar.
+// Set and display the current venture when a venture is clicked in the sidebar.
 const optionsPanel = document.querySelector('.options-panel');
 optionsPanel.addEventListener('click', (event) => {
     if (event.target.classList.contains('venture-bttn')) {
@@ -32,12 +32,25 @@ optionsPanel.addEventListener('click', (event) => {
 
         //update DOM
         console.log(event.target);
-        changeIcon(event.target, 'icons/folder-opened.svg');
         changeElementText('.venture-panel-title', CurrentVenture.getCurrentSelectedVenture());
 
         //Display all of the venture's tasks
         displayTasks(CurrentVenture.getCurrentSelectedVenture());
     }
+})
+
+
+// show options when a venture is right clicked
+optionsPanel.addEventListener('contextmenu', (event) => {
+    if (event.target.classList.contains('venture-bttn')) {
+        event.preventDefault();
+        appendToDom.createOptionsMenu(event.clientX, event.clientY);
+    }
+})
+
+//remove menu 
+document.addEventListener('click', () => {
+    appendToDom.closeOptionsMenu();
 })
 
 

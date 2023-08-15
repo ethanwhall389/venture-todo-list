@@ -51,6 +51,16 @@ header {
 /* Options panel */
 
 
+.options-menu-div {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    color: black;
+    background: white;
+    border: 1px solid black;
+    display: none;
+}
+
 .options-panel {
     width: 250px;
     max-width: 350px;
