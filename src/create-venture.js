@@ -1,5 +1,5 @@
 import { venturesArray } from "./ventures";
-import { appendToDom, changeElementText, displayTasks } from "./dom-control";
+import { appendToDom, changeElementText, displayTasks, displayVentures, displayNoVentures } from "./dom-control";
 import CurrentVenture from "./ventures";
 
 class Venture {
@@ -27,4 +27,24 @@ function createVenture (ventureName) {
 }
 
 
-export default createVenture;
+function deleteVenture (name) {
+    let ventureIndex = venturesArray.findIndex((element) => element.ventureName === name);
+    venturesArray.splice(ventureIndex, 1);
+    console.log(venturesArray);
+    displayVentures();
+    
+    //Update venture panel
+    if (venturesArray.length > 0) {
+        CurrentVenture.updateSelectedVenture(venturesArray[ventureIndex].ventureName);
+        changeElementText('.venture-panel-title', CurrentVenture.getCurrentSelectedVenture());
+        displayTasks(CurrentVenture.getCurrentSelectedVenture());
+    } else {
+        displayNoVentures();   
+    }
+}
+
+
+export {
+    createVenture,
+    deleteVenture
+}

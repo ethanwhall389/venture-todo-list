@@ -1,4 +1,4 @@
-import createVenture from "./create-venture";
+import { createVenture, deleteVenture } from "./create-venture";
 import { createTask, deleteTask } from "./create-task";
 import CurrentVenture from "./ventures";
 import { appendToDom, changeElementText, displayTasks, changeIcon } from "./dom-control";
@@ -64,7 +64,7 @@ document.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete-task')) {
         console.log('delete clicked')
         deleteTask(dataName);
+    } else if (event.target.classList.contains('delete-venture')) {
+        deleteVenture(dataName);
     }
-    
-    
 })

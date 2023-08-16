@@ -118,9 +118,26 @@ function changeElementText (elementToGrab, newText) {
     element.textContent = newText;
 }
 
+function displayNoVentures () {
+    let addTaskBttn = document.querySelector('.new-task-bttn');
+    let tasksSection = document.querySelector('.tasks-section');
+    addTaskBttn.style.display = 'none';
+    tasksSection.textContent = '';
+
+    changeElementText('.venture-panel-title', 'Create a venture to get started.');
+}
+// CurrentVenture.updateSelectedVenture(venturesArray[ventureIndex].ventureName);
+// changeElementText('.venture-panel-title', CurrentVenture.getCurrentSelectedVenture());
+// displayTasks(CurrentVenture.getCurrentSelectedVenture());
+
 
 function displayTasks (currentVenture) {
     tasksContainer.textContent = '';
+    
+    //make sure add tasks bttn is visible
+    let addTaskBttn = document.querySelector('.new-task-bttn');
+    addTaskBttn.style.display = 'block';
+    
     let currentVentureIndex = venturesArray.findIndex((element) => element.ventureName === currentVenture);
     if (currentVentureIndex != -1) {
         let tasksArray = venturesArray[currentVentureIndex].tasks;
@@ -135,11 +152,22 @@ function displayTasks (currentVenture) {
     }
 }
 
+function displayVentures () {
+    let venturesSection = document.querySelector('.ventures-section');
+    venturesSection.textContent = '';
+    venturesArray.forEach((element) => {
+        appendToDom.appendVenture(element.ventureName);
+    } )
+
+}
+
 
 
 
 export { appendToDom,
     changeElementText,
     displayTasks,
+    displayVentures,
+    displayNoVentures,
     changeIcon,
 };
