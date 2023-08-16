@@ -45,11 +45,17 @@ const appendToDom = (() => {
         let newTaskTitle = document.createElement('p');
         newTaskTitle.classList.add('task');
         newTaskTitle.textContent = name;
+
+        let options = document.createElement('img');
+        options.setAttribute('src', 'icons/dots-vertical.svg');
+        options.classList.add('task-menu');
+        options.classList.add('task');
         
 
         tasksContainer.appendChild(newTaskDiv);
         newTaskDiv.appendChild(checkBox);
         newTaskDiv.appendChild(newTaskTitle);
+        newTaskDiv.appendChild(options);
     }
 
     let isMenu = false;
@@ -72,18 +78,6 @@ const appendToDom = (() => {
             menuList.appendChild(item);
         })
 
-        // const editVenture = document.createElement('li');
-        // editVenture.classList.add('edit-venture');
-        // editVenture.textContent = 'Edit';
-
-        // const deleteVenture = document.createElement('li');
-        // deleteVenture.classList.add('delete-venture');
-        // deleteVenture.textContent = 'Delete';
-
-        
-        // menuList.appendChild(editVenture);
-        // menuList.appendChild(deleteVenture);
-
         menuDiv.style.display = 'block';
         menuDiv.style.left = mouseX + 'px';
         menuDiv.style.top = mouseY + 'px';
@@ -103,7 +97,8 @@ const appendToDom = (() => {
         appendVenture,
         appendTask,
         createOptionsMenu,
-        closeOptionsMenu
+        closeOptionsMenu,
+        isMenu
     };
 
 })();
@@ -124,7 +119,7 @@ function displayNoVentures () {
     addTaskBttn.style.display = 'none';
     tasksSection.textContent = '';
 
-    changeElementText('.venture-panel-title', 'Create a venture to get started.');
+    changeElementText('.venture-panel-title', 'Create a venture to get started');
 }
 // CurrentVenture.updateSelectedVenture(venturesArray[ventureIndex].ventureName);
 // changeElementText('.venture-panel-title', CurrentVenture.getCurrentSelectedVenture());

@@ -39,6 +39,22 @@ optionsPanel.addEventListener('click', (event) => {
     }
 })
 
+//remove menu 
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains !== 'task-menu') {
+        appendToDom.closeOptionsMenu();
+    }
+})
+
+// show task options when the verticle menu is clicked
+let tasksSection = document.querySelector('.tasks-section');
+tasksSection.addEventListener('click', (event) => {
+    if (event.target.classList.contains('task-menu')) {
+        console.log('menu-clicked');
+        appendToDom.createOptionsMenu(event.clientX, event.clientY, ['Edit', 'Delete'], 'task');
+    }
+})
+
 
 // show options when a venture or task is right clicked
 let dataName;
@@ -48,15 +64,11 @@ window.addEventListener('contextmenu', (event) => {
         appendToDom.createOptionsMenu(event.clientX, event.clientY, ['Rename', 'Delete'], 'venture');
     } else if (event.target.classList.contains('task')) {
         event.preventDefault();
-        appendToDom.createOptionsMenu(event.clientX, event.clientY, ['Edit', 'Delete'], 'task')
+        appendToDom.createOptionsMenu(event.clientX, event.clientY, ['Edit', 'Delete'], 'task');
     }
     dataName = event.target.getAttribute('data-name');
 })
 
-//remove menu 
-document.addEventListener('click', () => {
-    appendToDom.closeOptionsMenu();
-})
 
 
 // delete a task when delete menu option is chosen
