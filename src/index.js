@@ -41,7 +41,7 @@ optionsPanel.addEventListener('click', (event) => {
 
 //remove menu 
 document.addEventListener('click', (event) => {
-    if (event.target.classList.contains !== 'task-menu') {
+    if (!event.target.classList.contains('task-menu')) {
         appendToDom.closeOptionsMenu();
     }
 })
