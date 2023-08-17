@@ -66,13 +66,15 @@ header {
 }
 
 
-/* Options panel */
+/* new venture form */
 
 .new-venture-form {
     background-color: var(--header-footer-color);
     padding: 15px;
+    margin: 10px 0;
     border-radius: 10px;
-    display: flex;
+    /* set to display none by default, changed by js */
+    display: none;
     flex-direction: column;
     gap: 10px;
 }
@@ -90,8 +92,17 @@ header {
 
 #venture-name-input {
     height: 30px;
+    width: 80%;
     font-size: 0.8em;
-    padding: 3px;
+    padding: 3px 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+#venture-name-input:focus {
+    border: none;
+    outline: 2px solid var(--accent-color);
+
 }
 
 .venture-submit-bttn, .venture-cancel-bttn {
@@ -113,6 +124,8 @@ header {
 }
 
 
+
+/* Options panel */
 
 .options-panel {
     width: 250px;

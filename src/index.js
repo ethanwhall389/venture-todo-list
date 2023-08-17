@@ -4,15 +4,35 @@ import CurrentVenture from "./ventures";
 import { appendToDom, changeElementText, displayTasks, changeIcon } from "./dom-control";
 
 
-let bttnAddVenture = document.querySelector('.new-venture-bttn');
-let bttnAddTask = document.querySelector('.new-task-bttn');
-
-bttnAddVenture.addEventListener('click', () => {
-    let ventureName = prompt('What should the name for this venture be?')
-    createVenture(ventureName);
+// Add new venture
+let bttnNewVenture = document.querySelector('.new-venture-bttn');
+let formNewVenture = document.querySelector('.new-venture-form');
+let bttnAddVenture = document.querySelector('.venture-submit-bttn');
+let newVentureInput = document.querySelector('#venture-name-input');
+let bttnCancelVenture = document.querySelector('.venture-cancel-bttn');
+bttnNewVenture.addEventListener('click', () => {
+    // let ventureName = prompt('What should the name for this venture be?')
+    formNewVenture.style.display = 'flex';
+    newVentureInput.focus();
 })
 
-bttnAddTask.addEventListener('click', () => {
+bttnAddVenture.addEventListener('click', (event) => {
+    event.preventDefault();
+    createVenture(newVentureInput.value);
+    formNewVenture.style.display = 'none';
+    newVentureInput.value = '';
+})
+
+bttnCancelVenture.addEventListener('click', () => {
+    formNewVenture.style.display = 'none';
+    newVentureInput.value = '';
+})
+
+
+
+let bttnNewTask = document.querySelector('.new-task-bttn');
+
+bttnNewTask.addEventListener('click', () => {
     let taskName = prompt('Enter the task name');
     let taskDate = prompt('Enter the task due date (mm/dd/yy)');
     let taskImportant = prompt('Is this task of high important? True or false.');
