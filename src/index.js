@@ -91,12 +91,19 @@ window.addEventListener('contextmenu', (event) => {
 
 
 
-// delete a task when delete menu option is chosen
+// delete a task or venture when delete menu option is chosen
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete-task')) {
         console.log('delete clicked')
         deleteTask(dataName);
     } else if (event.target.classList.contains('delete-venture')) {
         deleteVenture(dataName);
+    }
+})
+
+//edit a venture when the option is chosen
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('rename-venture')) {
+        //rename
     }
 })
