@@ -29,7 +29,7 @@ bttnCancelVenture.addEventListener('click', () => {
 })
 
 
-
+// Add new task
 let bttnNewTask = document.querySelector('.new-task-bttn');
 
 bttnNewTask.addEventListener('click', () => {

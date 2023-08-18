@@ -38,15 +38,18 @@
                 <!-- End of samples for styling -->
                 <!-- js inputs created ventures here -->
             </div>
-            <form action="post" class="new-venture-form">
+
+            <!-- New Venture form -->
+            <form action="post" class="new-venture-form form">
                 <div class="form-inputs-div">
-                    <input id="venture-name-input" type="text" placeholder="Venture Name" autocomplete="off">
+                    <input id="venture-name-input" class="form-input" type="text" placeholder="Venture Name" autocomplete="off">
                 </div>
                 <div class="form-bttns-div">
-                    <input type="submit" class="venture-submit-bttn" value="Add">
-                    <input type="button" class="venture-cancel-bttn" value="Cancel">    
+                    <input type="submit" class="venture-submit-bttn form-bttn" value="Add">
+                    <input type="button" class="venture-cancel-bttn form-bttn" value="Cancel">    
                 </div>
             </form>
+
             <h3 class="new-venture-bttn bttn">+ New Venture</h3>
             <hr class="hr-bottom">
             <div class="venture-options">
@@ -66,7 +69,25 @@
                     </div>
                     <!-- JS tasks added here -->
                 </div>
+
+                <!-- New task form -->
+                <form action="post" class="new-task-form form">
+                    <div class="task-inputs-div">
+                        <input id="task-name-input" class="form-input" type="text" placeholder="Task" autocomplete="off">
+                        <textarea class="task-form-notes form-input" placeholder="Notes about this task"></textarea>
+                        <div class="date-and-priority">
+                            <input type="date" class="form-input input-date" placeholder="Due Date">
+                            <img src="icons/star-filled.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="form-bttns-div">
+                        <input type="submit" class="task-submit-bttn form-bttn" value="Add">
+                        <input type="button" class="task-cancel-bttn form-bttn" value="Cancel">    
+                    </div>
+                </form>
+
                 <h3 class="new-task-bttn bttn">+ New Task</h3>
+    
         </div>
     </div>
 
