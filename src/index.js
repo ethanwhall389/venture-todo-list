@@ -112,9 +112,28 @@ document.addEventListener('click', (event) => {
         title.style.display = 'none';
         let input = document.createElement('input');
         input.setAttribute('type', 'text');
+        input.classList.add('form-input');
+        
+
+        let updateBttn = document.createElement('button');
+        updateBttn.classList.add('update-venture-bttn');
+        updateBttn.classList.add('form-bttn');
+        updateBttn.textContent = 'Update';
 
         ventureDiv.appendChild(input);
+        ventureDiv.appendChild(updateBttn);
+        input.focus();
         // change the p element to a text input
         // find out how to update an array value.
     }
 })
+
+
+//when update venture bttn is clicked
+window.addEventListener('click', (event) => {
+    if (event.target.classList.contains('update-venture-bttn')) {
+        // push the input value to the array
+        // hide the input and the button
+        //display the title again (will have to update it?).
+    }
+});

@@ -7,6 +7,10 @@ class Venture {
         this.ventureName = ventureName;
         this.tasks = [];
     }
+
+    updateVentureName (name) {
+        this.ventureName = name;
+    }
 }
 
 
