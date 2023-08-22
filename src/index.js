@@ -18,9 +18,11 @@ bttnNewVenture.addEventListener('click', () => {
 
 bttnAddVenture.addEventListener('click', (event) => {
     event.preventDefault();
-    createVenture(newVentureInput.value);
-    formNewVenture.style.display = 'none';
-    newVentureInput.value = '';
+    if (newVentureInput.value !== '') {
+        createVenture(newVentureInput.value);
+        formNewVenture.style.display = 'none';
+        newVentureInput.value = '';
+    }
 })
 
 bttnCancelVenture.addEventListener('click', () => {
@@ -105,5 +107,14 @@ document.addEventListener('click', (event) => {
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('rename-venture')) {
         //rename
+        let ventureDiv = document.querySelector(`[data-name=${dataName}]`);
+        let title = document.querySelector(`[data-name=${dataName}] p`);
+        title.style.display = 'none';
+        let input = document.createElement('input');
+        input.setAttribute('type', 'text');
+
+        ventureDiv.appendChild(input);
+        // change the p element to a text input
+        // find out how to update an array value.
     }
 })
