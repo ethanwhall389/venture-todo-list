@@ -1,6 +1,6 @@
 import { venturesArray } from "./ventures";
 import CurrentVenture from "./ventures";
-import { displayTasks } from "./dom-control";
+import { UpdateDom } from "./dom-control/update-dom.js";
 // import currentSelectedVenture from "./index";
 
 class Task {
@@ -20,7 +20,7 @@ function createTask (name, dueDate, important, notes) {
     venturesArray[currentVentureIndex].tasks.push(task);
     console.log(venturesArray);
 
-    displayTasks(CurrentVenture.getCurrentSelectedVenture());
+    UpdateDom.displayTasks(CurrentVenture.getCurrentSelectedVenture());
 
 }
 
@@ -31,7 +31,7 @@ function deleteTask (name) {
 
     console.log(venturesArray);
 
-    displayTasks(CurrentVenture.getCurrentSelectedVenture());
+    UpdateDom.displayTasks(CurrentVenture.getCurrentSelectedVenture());
 }
 
 

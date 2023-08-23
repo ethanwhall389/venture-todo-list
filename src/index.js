@@ -1,8 +1,8 @@
 import { createVenture, deleteVenture } from "./create-venture";
 import { createTask, deleteTask } from "./create-task";
 import CurrentVenture from "./ventures";
-import { appendToDom, changeElementText, displayTasks, changeIcon } from "./dom-control";
-
+import AppendToDom from "./dom-control/append-to-dom.js";
+import UpdateDom from "./dom-control/update-dom.js";
 
 // Add new venture
 let bttnNewVenture = document.querySelector('.new-venture-bttn');
@@ -54,17 +54,17 @@ optionsPanel.addEventListener('click', (event) => {
 
         //update DOM
         console.log(event.target);
-        changeElementText('.venture-panel-title', CurrentVenture.getCurrentSelectedVenture());
+        UpdateDom.changeElementText('.venture-panel-title', CurrentVenture.getCurrentSelectedVenture());
 
         //Display all of the venture's tasks
-        displayTasks(CurrentVenture.getCurrentSelectedVenture());
+        UpdateDom.displayTasks(CurrentVenture.getCurrentSelectedVenture());
     }
 })
 
 //remove menu 
 document.addEventListener('click', (event) => {
     if (!event.target.classList.contains('task-menu')) {
-        appendToDom.closeOptionsMenu();
+        AppendToDom.closeOptionsMenu();
     }
 })
 
@@ -73,7 +73,7 @@ let tasksSection = document.querySelector('.tasks-section');
 tasksSection.addEventListener('click', (event) => {
     if (event.target.classList.contains('task-menu')) {
         console.log('menu-clicked');
-        appendToDom.createOptionsMenu(event.clientX, event.clientY, ['Edit', 'Delete'], 'task');
+        AppendToDom.createOptionsMenu(event.clientX, event.clientY, ['Edit', 'Delete'], 'task');
     }
 })
 
@@ -83,10 +83,10 @@ let dataName;
 window.addEventListener('contextmenu', (event) => {
     if (event.target.classList.contains('venture-bttn')) {
         event.preventDefault();
-        appendToDom.createOptionsMenu(event.clientX, event.clientY, ['Rename', 'Delete'], 'venture');
+        AppendToDom.createOptionsMenu(event.clientX, event.clientY, ['Rename', 'Delete'], 'venture');
     } else if (event.target.classList.contains('task')) {
         event.preventDefault();
-        appendToDom.createOptionsMenu(event.clientX, event.clientY, ['Edit', 'Delete'], 'task');
+        AppendToDom.createOptionsMenu(event.clientX, event.clientY, ['Edit', 'Delete'], 'task');
     }
     dataName = event.target.getAttribute('data-name');
 })

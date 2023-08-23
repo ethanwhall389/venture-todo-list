@@ -1,11 +1,22 @@
-import { venturesArray } from "./ventures";
 
-let tasksContainer = document.querySelector('.tasks-section');
+const tasksContainer = document.querySelector('.tasks-section');
 
 
-const appendToDom = (() => {
+class AppendToDom {
+    
+    constructor() {
+        this.isMenu = false;
+    }
 
-    const appendVenture = (name) => {
+    static toggleIsMenu () {
+        if (this.isMenu === true) {
+            this.isMenu = false;
+        } else {
+            this.isMenu = true;
+        }
+    }
+
+    static appendVenture (name) {        
         let venturesContainer = document.querySelector('.ventures-section');
         
         let ventureDiv = document.createElement('div');
@@ -28,11 +39,9 @@ const appendToDom = (() => {
         venturesContainer.appendChild(ventureDiv);
         ventureDiv.appendChild(icon);
         ventureDiv.appendChild(ventureTitle);
-
     }
 
-    const appendTask = (name) => {
-        
+    static appendTask (name) {
         let newTaskDiv = document.createElement('div');
         newTaskDiv.classList.add('task-div');
         newTaskDiv.classList.add('task');
@@ -58,10 +67,8 @@ const appendToDom = (() => {
         newTaskDiv.appendChild(options);
     }
 
-    let isMenu = false;
-
-    const createOptionsMenu = (mouseX, mouseY, arrayOfOptions, type) => {
-        closeOptionsMenu();
+    static createOptionsMenu (mouseX, mouseY, arrayOfOptions, type) {
+        this.closeOptionsMenu();
         const menuDiv = document.createElement('div');
         menuDiv.classList.add('options-menu-div');
 
@@ -82,87 +89,20 @@ const appendToDom = (() => {
         menuDiv.style.left = mouseX + 'px';
         menuDiv.style.top = mouseY + 'px';
 
-        isMenu = true;
+        this.toggleIsMenu();
     }
 
-    const closeOptionsMenu = () => {
-        if (isMenu === true) {
+    static closeOptionsMenu () {
+        if (this.isMenu === true) {
             let menu = document.querySelector('.options-menu-div');
             document.body.removeChild(menu);
-            isMenu = false
+            this.toggleIsMenu();
         }
     }
-
-    return {
-        appendVenture,
-        appendTask,
-        createOptionsMenu,
-        closeOptionsMenu,
-        isMenu
-    };
-
-})();
-
-function changeIcon (iconToGrab, newIconPath) {
-    iconToGrab.setAttribute('src', newIconPath);
-}
-
-
-function changeElementText (elementToGrab, newText) {
-    let element = document.querySelector(elementToGrab);
-    element.textContent = newText;
-}
-
-function displayNoVentures () {
-    let addTaskBttn = document.querySelector('.new-task-bttn');
-    let tasksSection = document.querySelector('.tasks-section');
-    addTaskBttn.style.display = 'none';
-    tasksSection.textContent = '';
-
-    changeElementText('.venture-panel-title', 'Create a venture to get started');
-}
-// CurrentVenture.updateSelectedVenture(venturesArray[ventureIndex].ventureName);
-// changeElementText('.venture-panel-title', CurrentVenture.getCurrentSelectedVenture());
-// displayTasks(CurrentVenture.getCurrentSelectedVenture());
-
-
-function displayTasks (currentVenture) {
-    tasksContainer.textContent = '';
-    
-    //make sure add tasks bttn is visible
-    let addTaskBttn = document.querySelector('.new-task-bttn');
-    addTaskBttn.style.display = 'block';
-    
-    let currentVentureIndex = venturesArray.findIndex((element) => element.ventureName === currentVenture);
-    if (currentVentureIndex != -1) {
-        let tasksArray = venturesArray[currentVentureIndex].tasks;
-        if (tasksArray.length >= 1) {
-            tasksArray.forEach(element => {
-                appendToDom.appendTask(element.taskName);
-            });
-        }
-    } else {
-        console.log('the displayTasks function currentVentureIndex returned ' + currentVentureIndex);
-        return;
-    }
-}
-
-function displayVentures () {
-    let venturesSection = document.querySelector('.ventures-section');
-    venturesSection.textContent = '';
-    venturesArray.forEach((element) => {
-        appendToDom.appendVenture(element.ventureName);
-    } )
-
 }
 
 
 
-
-export { appendToDom,
-    changeElementText,
-    displayTasks,
-    displayVentures,
-    displayNoVentures,
-    changeIcon,
+export { 
+    AppendToDom
 };
