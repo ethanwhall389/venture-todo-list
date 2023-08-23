@@ -1,5 +1,5 @@
 import { venturesArray } from "../ventures";
-import { AppendToDom } from "./append-to-dom";
+import AppendToDom from "./append-to-dom";
 
 const tasksContainer = document.querySelector('.tasks-section');
 
@@ -56,4 +56,4 @@ class UpdateDom {
 }
 
 
-export { UpdateDom };
+export default UpdateDom;

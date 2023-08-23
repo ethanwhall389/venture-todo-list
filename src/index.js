@@ -1,5 +1,5 @@
-import { createVenture, deleteVenture } from "./create-venture";
-import { createTask, deleteTask } from "./create-task";
+import { Venture, createVenture, deleteVenture } from "./create-venture";
+import { Task, createTask, deleteTask } from "./create-task";
 import CurrentVenture from "./ventures";
 import AppendToDom from "./dom-control/append-to-dom.js";
 import UpdateDom from "./dom-control/update-dom.js";
@@ -19,7 +19,7 @@ bttnNewVenture.addEventListener('click', () => {
 bttnAddVenture.addEventListener('click', (event) => {
     event.preventDefault();
     if (newVentureInput.value !== '') {
-        createVenture(newVentureInput.value);
+        Venture.createVenture(newVentureInput.value);
         formNewVenture.style.display = 'none';
         newVentureInput.value = '';
     }
@@ -39,7 +39,7 @@ bttnNewTask.addEventListener('click', () => {
     let taskDate = prompt('Enter the task due date (mm/dd/yy)');
     let taskImportant = prompt('Is this task of high important? True or false.');
     let taskNotes = prompt('Enter any notes for this task');
-    createTask(taskName, taskDate, taskImportant, taskNotes);
+    Task.createTask(taskName, taskDate, taskImportant, taskNotes);
 })
 
 
@@ -97,9 +97,9 @@ window.addEventListener('contextmenu', (event) => {
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete-task')) {
         console.log('delete clicked')
-        deleteTask(dataName);
+        Task.deleteTask(dataName);
     } else if (event.target.classList.contains('delete-venture')) {
-        deleteVenture(dataName);
+        Venture.deleteVenture(dataName);
     }
 })
 

@@ -103,6 +103,4 @@ class AppendToDom {
 
 
 
-export { 
-    AppendToDom
-};
+export default AppendToDom;
