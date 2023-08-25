@@ -35,6 +35,8 @@ export default class UI {
         })
     }
 
+    // FIX  BUG ADDING INCREMENTAL TASK DUPLICATES!
+
     static addNewTask () {
 
         let formNewTask = document.querySelector('.new-task-form');
@@ -58,67 +60,29 @@ export default class UI {
             formNewTask.style.display = 'none';
         })
     }
+
+    // Set and display the current venture when a venture is clicked in the sidebar.
+    static displayVenture (clickEvent) {
+        CurrentVenture.updateSelectedVenture(clickEvent.target.getAttribute('data-name'));
+        Venture.updatePage();
+    }
     
 }
 
-let bttnNewVenture = document.querySelector('.new-venture-bttn');
+const bttnNewVenture = document.querySelector('.new-venture-bttn');
 bttnNewVenture.addEventListener('click', () => UI.addNewVenture());
 
 
-
-let bttnNewTask = document.querySelector('.new-task-bttn');
+const bttnNewTask = document.querySelector('.new-task-bttn');
 bttnNewTask.addEventListener('click', () => UI.addNewTask());
-
-
-// PUT THESE INTO CLASSES!
-
-// Add new task
-// let bttnSubmitTask = document.querySelector('.task-submit-bttn');
-// let bttnCancelTask = document.querySelector('.task-cancel-bttn');
-// let taskName = document.querySelector('#task-name-input');
-// let taskNotes= document.querySelector('.task-form-notes');
-// let taskDate = document.querySelector('.input-date');
-
-// bttnNewTask.addEventListener('click', () => {
-//     formNewTask.style.display = 'flex';
-//     taskName.focus();
-//     taskName.value = '';
-//     taskNotes.value = '';
-//     // let taskName = prompt('Enter the task name');
-//     // let taskDate = prompt('Enter the task due date (mm/dd/yy)');
-//     // let taskImportant = prompt('Is this task of high important? True or false.');
-//     // let taskNotes = prompt('Enter any notes for this task');
-//     // Task.createTask(taskName, taskDate, taskImportant, taskNotes);
-// })
-
-// bttnSubmitTask.addEventListener('click', (event) => {
-//     event.preventDefault();
-//     Task.createTask(taskName.value, taskDate.value, true, taskNotes.value);
-//     formNewTask.style.display = 'none';
-// })
-
-// bttnCancelTask.addEventListener('click', () => {
-//     formNewTask.style.display = 'none';
-// })
-
 
 
 // Set and display the current venture when a venture is clicked in the sidebar.
 const optionsPanel = document.querySelector('.options-panel');
 optionsPanel.addEventListener('click', (event) => {
-    if (event.target.classList.contains('venture-bttn')) {
-        // set the current venture
-        CurrentVenture.updateSelectedVenture(event.target.getAttribute('data-name'));
-        console.log(`Current selected venture: ${CurrentVenture.getCurrentSelectedVenture()}`);
-
-        //update DOM
-        console.log(event.target);
-        UpdateDom.changeElementText('.venture-panel-title', CurrentVenture.getCurrentSelectedVenture());
-
-        //Display all of the venture's tasks
-        UpdateDom.displayTasks(CurrentVenture.getCurrentSelectedVenture());
-    }
+    if (event.target.classList.contains('venture-bttn')) { UI.displayVenture(event) };
 })
+
 
 //remove menu 
 document.addEventListener('click', (event) => {
@@ -155,7 +119,6 @@ window.addEventListener('contextmenu', (event) => {
 // delete a task or venture when delete menu option is chosen
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete-task')) {
-        console.log('delete clicked')
         Task.deleteTask(dataName);
     } else if (event.target.classList.contains('delete-venture')) {
         Venture.deleteVenture(dataName);
