@@ -38,37 +38,13 @@ export default class UI {
     
 }
 
-// // Add new venture
-// let bttnNewVenture = document.querySelector('.new-venture-bttn');
-// let formNewVenture = document.querySelector('.new-venture-form');
-// let bttnAddVenture = document.querySelector('.venture-submit-bttn');
-// let newVentureInput = document.querySelector('#venture-name-input');
-// let bttnCancelVenture = document.querySelector('.venture-cancel-bttn');
-
-// bttnNewVenture.addEventListener('click', () => {
-//     formNewVenture.style.display = 'flex';
-//     newVentureInput.focus();
-// })
 let bttnNewVenture = document.querySelector('.new-venture-bttn');
 bttnNewVenture.addEventListener('click', () => UI.addNewVenture());
 
 
 
 
-// bttnAddVenture.addEventListener('click', (event) => {
-//     event.preventDefault();
-//     if (newVentureInput.value !== '') {
-//         Venture.createVenture(newVentureInput.value);
-//         formNewVenture.style.display = 'none';
-//         newVentureInput.value = '';
-//     }
-// })
-
-// bttnCancelVenture.addEventListener('click', () => {
-//     formNewVenture.style.display = 'none';
-//     newVentureInput.value = '';
-// })
-
+// PUT THESE INTO CLASSES!
 
 // Add new task
 let bttnNewTask = document.querySelector('.new-task-bttn');
