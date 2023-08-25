@@ -33,7 +33,30 @@ export default class UI {
             formNewVenture.style.display = 'none';
             newVentureInput.value = '';
         })
+    }
 
+    static addNewTask () {
+
+        let formNewTask = document.querySelector('.new-task-form');
+        let taskName = document.querySelector('#task-name-input');
+        let taskNotes= document.querySelector('.task-form-notes');
+        let taskDate = document.querySelector('.input-date');
+        let bttnSubmitTask = document.querySelector('.task-submit-bttn');
+        let bttnCancelTask = document.querySelector('.task-cancel-bttn');
+
+        formNewTask.style.display = 'flex';
+        taskName.value = '';
+        taskNotes.value = '';
+
+        bttnSubmitTask.addEventListener('click', (event) => {
+            event.preventDefault();
+            Task.createTask(taskName.value, taskDate.value, true, taskNotes.value);
+            formNewTask.style.display = 'none';
+        })
+        
+        bttnCancelTask.addEventListener('click', () => {
+            formNewTask.style.display = 'none';
+        })
     }
     
 }
@@ -43,39 +66,40 @@ bttnNewVenture.addEventListener('click', () => UI.addNewVenture());
 
 
 
+let bttnNewTask = document.querySelector('.new-task-bttn');
+bttnNewTask.addEventListener('click', () => UI.addNewTask());
+
 
 // PUT THESE INTO CLASSES!
 
 // Add new task
-let bttnNewTask = document.querySelector('.new-task-bttn');
-let formNewTask = document.querySelector('.new-task-form');
-let bttnSubmitTask = document.querySelector('.task-submit-bttn');
-let bttnCancelTask = document.querySelector('.task-cancel-bttn');
-let taskName = document.querySelector('#task-name-input');
-let taskNotes= document.querySelector('.task-form-notes');
-let taskDate = document.querySelector('.input-date');
+// let bttnSubmitTask = document.querySelector('.task-submit-bttn');
+// let bttnCancelTask = document.querySelector('.task-cancel-bttn');
+// let taskName = document.querySelector('#task-name-input');
+// let taskNotes= document.querySelector('.task-form-notes');
+// let taskDate = document.querySelector('.input-date');
 
-bttnNewTask.addEventListener('click', () => {
-    formNewTask.style.display = 'flex';
-    taskName.focus();
-    taskName.value = '';
-    taskNotes.value = '';
-    // let taskName = prompt('Enter the task name');
-    // let taskDate = prompt('Enter the task due date (mm/dd/yy)');
-    // let taskImportant = prompt('Is this task of high important? True or false.');
-    // let taskNotes = prompt('Enter any notes for this task');
-    // Task.createTask(taskName, taskDate, taskImportant, taskNotes);
-})
+// bttnNewTask.addEventListener('click', () => {
+//     formNewTask.style.display = 'flex';
+//     taskName.focus();
+//     taskName.value = '';
+//     taskNotes.value = '';
+//     // let taskName = prompt('Enter the task name');
+//     // let taskDate = prompt('Enter the task due date (mm/dd/yy)');
+//     // let taskImportant = prompt('Is this task of high important? True or false.');
+//     // let taskNotes = prompt('Enter any notes for this task');
+//     // Task.createTask(taskName, taskDate, taskImportant, taskNotes);
+// })
 
-bttnSubmitTask.addEventListener('click', (event) => {
-    event.preventDefault();
-    Task.createTask(taskName.value, taskDate.value, true, taskNotes.value);
-    formNewTask.style.display = 'none';
-})
+// bttnSubmitTask.addEventListener('click', (event) => {
+//     event.preventDefault();
+//     Task.createTask(taskName.value, taskDate.value, true, taskNotes.value);
+//     formNewTask.style.display = 'none';
+// })
 
-bttnCancelTask.addEventListener('click', () => {
-    formNewTask.style.display = 'none';
-})
+// bttnCancelTask.addEventListener('click', () => {
+//     formNewTask.style.display = 'none';
+// })
 
 
 
