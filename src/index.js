@@ -41,9 +41,10 @@ let taskNotes= document.querySelector('.task-form-notes');
 let taskDate = document.querySelector('.input-date');
 
 bttnNewTask.addEventListener('click', () => {
-    
     formNewTask.style.display = 'flex';
     taskName.focus();
+    taskName.value = '';
+    taskNotes.value = '';
     // let taskName = prompt('Enter the task name');
     // let taskDate = prompt('Enter the task due date (mm/dd/yy)');
     // let taskImportant = prompt('Is this task of high important? True or false.');
@@ -54,6 +55,10 @@ bttnNewTask.addEventListener('click', () => {
 bttnSubmitTask.addEventListener('click', (event) => {
     event.preventDefault();
     Task.createTask(taskName.value, taskDate.value, true, taskNotes.value);
+    formNewTask.style.display = 'none';
+})
+
+bttnCancelTask.addEventListener('click', () => {
     formNewTask.style.display = 'none';
 })
 
