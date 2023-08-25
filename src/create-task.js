@@ -16,7 +16,7 @@ class Task {
         // push to the index of the currentSelectedVenture
         // const index = (element) => element === CurrentVenture.getCurrentSelectedVenture;
         let currentVentureIndex = venturesArray.findIndex((element) => element.ventureName === CurrentVenture.getCurrentSelectedVenture());
-        if (venturesArray[currentVentureIndex] > -1) {            
+        if (currentVentureIndex > -1) {            
             venturesArray[currentVentureIndex].tasks.push(task);
             console.log(venturesArray);
         
