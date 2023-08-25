@@ -10,34 +10,64 @@ export default class UI {
     static loadPage () {
         Venture.updatePage();
     }
+
+    static addNewVenture () {
+        let formNewVenture = document.querySelector('.new-venture-form');
+        let bttnAddVenture = document.querySelector('.venture-submit-bttn');
+        let newVentureInput = document.querySelector('#venture-name-input');
+        let bttnCancelVenture = document.querySelector('.venture-cancel-bttn');
+
+        formNewVenture.style.display = 'flex';
+        newVentureInput.focus();
+
+        bttnAddVenture.addEventListener('click', (event) => {
+            event.preventDefault();
+            if (newVentureInput.value !== '') {
+                Venture.createVenture(newVentureInput.value);
+                formNewVenture.style.display = 'none';
+                newVentureInput.value = '';
+            }
+        })
+
+        bttnCancelVenture.addEventListener('click', () => {
+            formNewVenture.style.display = 'none';
+            newVentureInput.value = '';
+        })
+
+    }
     
 }
 
-// Add new venture
+// // Add new venture
+// let bttnNewVenture = document.querySelector('.new-venture-bttn');
+// let formNewVenture = document.querySelector('.new-venture-form');
+// let bttnAddVenture = document.querySelector('.venture-submit-bttn');
+// let newVentureInput = document.querySelector('#venture-name-input');
+// let bttnCancelVenture = document.querySelector('.venture-cancel-bttn');
+
+// bttnNewVenture.addEventListener('click', () => {
+//     formNewVenture.style.display = 'flex';
+//     newVentureInput.focus();
+// })
 let bttnNewVenture = document.querySelector('.new-venture-bttn');
-let formNewVenture = document.querySelector('.new-venture-form');
-let bttnAddVenture = document.querySelector('.venture-submit-bttn');
-let newVentureInput = document.querySelector('#venture-name-input');
-let bttnCancelVenture = document.querySelector('.venture-cancel-bttn');
+bttnNewVenture.addEventListener('click', () => UI.addNewVenture());
 
-bttnNewVenture.addEventListener('click', () => {
-    formNewVenture.style.display = 'flex';
-    newVentureInput.focus();
-})
 
-bttnAddVenture.addEventListener('click', (event) => {
-    event.preventDefault();
-    if (newVentureInput.value !== '') {
-        Venture.createVenture(newVentureInput.value);
-        formNewVenture.style.display = 'none';
-        newVentureInput.value = '';
-    }
-})
 
-bttnCancelVenture.addEventListener('click', () => {
-    formNewVenture.style.display = 'none';
-    newVentureInput.value = '';
-})
+
+// bttnAddVenture.addEventListener('click', (event) => {
+//     event.preventDefault();
+//     if (newVentureInput.value !== '') {
+//         Venture.createVenture(newVentureInput.value);
+//         formNewVenture.style.display = 'none';
+//         newVentureInput.value = '';
+//     }
+// })
+
+// bttnCancelVenture.addEventListener('click', () => {
+//     formNewVenture.style.display = 'none';
+//     newVentureInput.value = '';
+// })
 
 
 // Add new task
