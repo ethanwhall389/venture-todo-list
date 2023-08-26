@@ -38,29 +38,6 @@ class Task {
     
 }
 
-// function createTask (name, dueDate, important, notes) {
-//     let task = new Task (name, dueDate, important, notes);
-//     // push to the index of the currentSelectedVenture
-//     // const index = (element) => element === CurrentVenture.getCurrentSelectedVenture;
-//     let currentVentureIndex = venturesArray.findIndex((element) => element.ventureName === CurrentVenture.getCurrentSelectedVenture());
-//     venturesArray[currentVentureIndex].tasks.push(task);
-//     console.log(venturesArray);
-
-//     UpdateDom.displayTasks(CurrentVenture.getCurrentSelectedVenture());
-
-// }
-
-// function deleteTask (name) {
-//     let currentVentureIndex = venturesArray.findIndex((element) => element.ventureName === CurrentVenture.getCurrentSelectedVenture());
-//     let taskIndex = venturesArray[currentVentureIndex].tasks.findIndex((element) => element.taskName === name);
-//     venturesArray[currentVentureIndex].tasks.splice(taskIndex, 1);
-
-//     console.log(venturesArray);
-
-//     UpdateDom.displayTasks(CurrentVenture.getCurrentSelectedVenture());
-// }
-
-
 export {
     Task
 }

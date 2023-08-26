@@ -10,8 +10,13 @@ FEATURES TO ADD
 
 Done--- Allow the user to hit enter on the update button for renaming a venture.
 Done--- allow user to hit canel to cancel update venture.
+Done--- allow users to hit cancel to remove new venture form and new task form
 
-allow users to hit cancel to remove new venture form and new task form
-
+Auto fill task due date with current date;
+Allow task to be "starred" as important.
+Allow users to edit tasks.
+clicking on tasks triggers the edit feature.
+Allow users to complete tasks
+Add local storage
 
 

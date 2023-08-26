@@ -1,4 +1,5 @@
 import { Venture, createVenture, deleteVenture } from "./create-venture";
+import { format } from 'date-fns';
 import { Task, createTask, deleteTask } from "./create-task";
 import CurrentVenture, { venturesArray } from "./ventures";
 import AppendToDom from "./dom-control/append-to-dom.js";
@@ -52,6 +53,11 @@ export default class UI {
         taskName.focus();
         taskName.value = '';
         taskNotes.value = '';
+
+        const dateInput = document.querySelector('.input-date');
+        const currentDate = new Date();
+        const formattedDate = format(currentDate, 'yyyy-MM-dd');
+        dateInput.value = formattedDate;
         
         bttnCancelTask.addEventListener('click', () => {
             formNewTask.style.display = 'none';
@@ -85,6 +91,9 @@ bttnNewVenture.addEventListener('click', () => UI.addNewVenture());
 
 
 const formNewTask = document.querySelector('.new-task-form');
+
+
+
 const taskName = document.querySelector('#task-name-input');
 const taskNotes= document.querySelector('.task-form-notes');
 const taskDate = document.querySelector('.input-date');
