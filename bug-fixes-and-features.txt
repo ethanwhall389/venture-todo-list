@@ -8,7 +8,8 @@ Done--- Cannot rename venture's when their name contains a space
 
 FEATURES TO ADD
 
-Allow the user to hit enter on the update button for renaming a venture.
+Done--- Allow the user to hit enter on the update button for renaming a venture.
+Done--- allow user to hit canel to cancel update venture.
 
 
 
