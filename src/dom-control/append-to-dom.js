@@ -99,6 +99,29 @@ class AppendToDom {
             this.toggleIsMenu();
         }
     }
+
+    static renameVenture (dataName) {
+        //rename
+        let ventureDiv = document.querySelector(`[data-name=${dataName}]`);
+        let title = document.querySelector(`[data-name=${dataName}] p`);
+        title.style.display = 'none';
+        let input = document.createElement('input');
+        input.setAttribute('type', 'text');
+        input.classList.add('form-input');
+        input.classList.add('update-venture-input');
+        
+
+        let updateBttn = document.createElement('button');
+        updateBttn.classList.add('update-venture-bttn');
+        updateBttn.classList.add('form-bttn');
+        updateBttn.textContent = 'Update';
+
+        ventureDiv.appendChild(input);
+        ventureDiv.appendChild(updateBttn);
+        input.focus();
+        // change the p element to a text input
+        // find out how to update an array value.  
+    }
 }
 
 

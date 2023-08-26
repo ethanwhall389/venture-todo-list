@@ -109,6 +109,7 @@ tasksSection.addEventListener('click', (event) => {
 let dataName;
 window.addEventListener('contextmenu', (event) => {
     if (event.target.classList.contains('venture-bttn')) {
+        UI.displayVenture(event);
         event.preventDefault();
         AppendToDom.createOptionsMenu(event.clientX, event.clientY, ['Rename', 'Delete'], 'venture');
     } else if (event.target.classList.contains('task')) {
@@ -132,25 +133,19 @@ document.addEventListener('click', (event) => {
 //edit a venture when the option is chosen
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('rename-venture')) {
-        //rename
-        let ventureDiv = document.querySelector(`[data-name=${dataName}]`);
-        let title = document.querySelector(`[data-name=${dataName}] p`);
-        title.style.display = 'none';
-        let input = document.createElement('input');
-        input.setAttribute('type', 'text');
-        input.classList.add('form-input');
+        AppendToDom.renameVenture(dataName);
+    }
+})
+
+//Update venture's name when the update button is clicked 
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('update-venture-bttn')) {
         
-
-        let updateBttn = document.createElement('button');
-        updateBttn.classList.add('update-venture-bttn');
-        updateBttn.classList.add('form-bttn');
-        updateBttn.textContent = 'Update';
-
-        ventureDiv.appendChild(input);
-        ventureDiv.appendChild(updateBttn);
-        input.focus();
-        // change the p element to a text input
-        // find out how to update an array value.
+        const updateInput = document.querySelector('.update-venture-input');
+        //change the array value in the selected venture.
+        Venture.updateVentureName (updateInput.value);
+        //update the page display
+        Venture.updatePage();
     }
 })
 

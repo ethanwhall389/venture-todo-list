@@ -9,8 +9,22 @@ class Venture {
         this.tasks = [];
     }
 
-    updateVentureName (name) {
-        this.ventureName = name;
+    static updateVentureName (newName) {
+        let isInsideChange = false;
+        //find the index of the current venture
+        let ventureIndex = venturesArray.findIndex((element) => element.ventureName === CurrentVenture.getCurrentSelectedVenture());
+        
+        if (CurrentVenture.getCurrentSelectedVenture() === venturesArray[ventureIndex].ventureName) {
+            isInsideChange = true;
+        }
+
+        //update the index.ventureName value.
+        venturesArray[ventureIndex].ventureName = newName;
+        
+        // if the current selected venture is the venture we are changing, update the name
+        if (isInsideChange === true) {
+            CurrentVenture.updateSelectedVenture(newName);
+        }
     }
 
     static updatePage () {
