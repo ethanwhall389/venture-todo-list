@@ -71,15 +71,6 @@ class Venture {
         
         this.updatePage();
         
-        // UpdateDom.displayVentures();
-        
-        // //Update venture panel
-        // if (venturesArray.length > 0) {
-        //     UpdateDom.changeElementText('.venture-panel-title', CurrentVenture.getCurrentSelectedVenture());
-        //     UpdateDom.displayTasks(CurrentVenture.getCurrentSelectedVenture());
-        // } else {
-        //     UpdateDom.displayNoVentures();   
-        // }
     }
 }
 

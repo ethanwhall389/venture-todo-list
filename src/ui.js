@@ -134,9 +134,20 @@ document.addEventListener('click', (event) => {
 })
 
 //edit a venture when the option is chosen
+let isEditVentureOpen = false;
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('rename-venture')) {
         AppendToDom.renameVenture(dataName);
+        isEditVentureOpen = true;
+    }
+})
+
+// close edit venture form if escape key is pressed 
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        if (isEditVentureOpen === true) {
+            Venture.updatePage();
+        }
     }
 })
 

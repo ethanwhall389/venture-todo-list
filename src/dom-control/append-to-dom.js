@@ -106,19 +106,25 @@ class AppendToDom {
         let ventureDiv = document.querySelector(`[data-name="${dataName}"]`);
         let title = document.querySelector(`[data-name="${dataName}"] p`);
         title.style.display = 'none';
+        
+        let form = document.createElement('form');
+        form.classList.add('update-venture-form');
+        
         let input = document.createElement('input');
         input.setAttribute('type', 'text');
         input.classList.add('form-input');
         input.classList.add('update-venture-input');
         
 
-        let updateBttn = document.createElement('button');
+        let updateBttn = document.createElement('input');
+        updateBttn.setAttribute('type', 'submit');
         updateBttn.classList.add('update-venture-bttn');
         updateBttn.classList.add('form-bttn');
-        updateBttn.textContent = 'Update';
+        updateBttn.value = 'Update';
 
-        ventureDiv.appendChild(input);
-        ventureDiv.appendChild(updateBttn);
+        ventureDiv.appendChild(form);
+        form.appendChild(input);
+        form.appendChild(updateBttn);
         input.focus();
         // change the p element to a text input
         // find out how to update an array value.  

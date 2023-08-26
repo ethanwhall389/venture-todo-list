@@ -1,0 +1,14 @@
+BUG FIXES NEEDED
+
+
+Done--- Cannot rename venture's when their name contains a space
+
+
+
+
+FEATURES TO ADD
+
+Allow the user to hit enter on the update button for renaming a venture.
+
+
+

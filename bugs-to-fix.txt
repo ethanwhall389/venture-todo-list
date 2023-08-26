@@ -1,2 +1,0 @@
-Cannot rename venture's when their name contains a space
-
