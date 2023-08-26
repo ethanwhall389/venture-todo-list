@@ -12,8 +12,8 @@ Done--- Allow the user to hit enter on the update button for renaming a venture.
 Done--- allow user to hit canel to cancel update venture.
 Done--- allow users to hit cancel to remove new venture form and new task form
 Done--- Auto fill task due date with current date;
+Done--- Display the due date of the task.
 
-Display the due date of the task.
 Display whether the task is important.
 Allow task to be "starred" as important.
 Allow users to edit tasks.
