@@ -275,8 +275,24 @@ hr {
     background-color: var(--header-footer-color);
 }
 
+.date-menu-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-due-date {
+    font-size: 0.7em;
+}
+
 .task-menu {
     width: 30px;
+    height: auto;
+    transition: 0.5s;
+}
+
+.task-menu:hover {
+    width: 35px;
     height: auto;
 }
 

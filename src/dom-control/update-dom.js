@@ -37,7 +37,7 @@ class UpdateDom {
             let tasksArray = venturesArray[currentVentureIndex].tasks;
             if (tasksArray.length >= 1) {
                 tasksArray.forEach(element => {
-                    AppendToDom.appendTask(element.taskName);
+                    AppendToDom.appendTask(element.taskName, element.dueDate);
                 });
             }
         } else {

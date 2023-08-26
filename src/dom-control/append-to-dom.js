@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 
 const tasksContainer = document.querySelector('.tasks-section');
 
@@ -42,7 +43,7 @@ class AppendToDom {
         ventureDiv.appendChild(ventureTitle);
     }
 
-    static appendTask (name) {
+    static appendTask (name, dueDate) {
         let newTaskDiv = document.createElement('div');
         newTaskDiv.classList.add('task-div');
         newTaskDiv.classList.add('task');
@@ -56,16 +57,28 @@ class AppendToDom {
         newTaskTitle.classList.add('task');
         newTaskTitle.textContent = name;
 
+        let newTaskDueDate = document.createElement('p');
+        newTaskDueDate.classList.add('task-due-date');
+            //convert the date string back to a date object so we can format it how we want.
+        let dueDateObject = new Date();
+        let formattedDueDate = format(dueDateObject, 'mm/dd/yy');
+        newTaskDueDate.textContent = formattedDueDate;
+
+        
         let options = document.createElement('img');
         options.setAttribute('src', 'icons/dots-vertical.svg');
         options.classList.add('task-menu');
         options.classList.add('task');
         
+        const dateAndMenuDiv = document.createElement('div');
+        dateAndMenuDiv.classList.add('date-menu-div');
+        dateAndMenuDiv.appendChild(newTaskDueDate);
+        dateAndMenuDiv.appendChild(options);
 
         tasksContainer.appendChild(newTaskDiv);
         newTaskDiv.appendChild(checkBox);
         newTaskDiv.appendChild(newTaskTitle);
-        newTaskDiv.appendChild(options);
+        newTaskDiv.appendChild(dateAndMenuDiv);
     }
 
     static createOptionsMenu (mouseX, mouseY, arrayOfOptions, type) {
