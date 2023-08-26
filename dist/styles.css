@@ -142,7 +142,7 @@ header {
     background-color: var(--main-font-color);
 }
 
-.venture-submit-bttn:hover, .task-submit-bttn:hover {
+.venture-submit-bttn:hover, .task-submit-bttn:hover, .update-venture-bttn:hover {
     cursor: pointer;
     background-color: var(--panel-color);
 }

@@ -19,6 +19,7 @@ class AppendToDom {
     static appendVenture (name) {        
         let venturesContainer = document.querySelector('.ventures-section');
         
+
         let ventureDiv = document.createElement('div');
         ventureDiv.classList.add('venture-div');
         ventureDiv.classList.add('venture-bttn');
@@ -102,8 +103,8 @@ class AppendToDom {
 
     static renameVenture (dataName) {
         //rename
-        let ventureDiv = document.querySelector(`[data-name=${dataName}]`);
-        let title = document.querySelector(`[data-name=${dataName}] p`);
+        let ventureDiv = document.querySelector(`[data-name="${dataName}"]`);
+        let title = document.querySelector(`[data-name="${dataName}"] p`);
         title.style.display = 'none';
         let input = document.createElement('input');
         input.setAttribute('type', 'text');

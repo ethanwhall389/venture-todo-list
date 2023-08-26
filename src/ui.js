@@ -1,6 +1,6 @@
 import { Venture, createVenture, deleteVenture } from "./create-venture";
 import { Task, createTask, deleteTask } from "./create-task";
-import CurrentVenture from "./ventures";
+import CurrentVenture, { venturesArray } from "./ventures";
 import AppendToDom from "./dom-control/append-to-dom.js";
 import UpdateDom from "./dom-control/update-dom.js";
 
@@ -109,6 +109,7 @@ tasksSection.addEventListener('click', (event) => {
 let dataName;
 window.addEventListener('contextmenu', (event) => {
     if (event.target.classList.contains('venture-bttn')) {
+            // set this as the current venture to make our lives easier when updating display with new name.
         UI.displayVenture(event);
         event.preventDefault();
         AppendToDom.createOptionsMenu(event.clientX, event.clientY, ['Rename', 'Delete'], 'venture');
@@ -116,7 +117,9 @@ window.addEventListener('contextmenu', (event) => {
         event.preventDefault();
         AppendToDom.createOptionsMenu(event.clientX, event.clientY, ['Edit', 'Delete'], 'task');
     }
+    //remove spaces from the data name attribute
     dataName = event.target.getAttribute('data-name');
+
 })
 
 
