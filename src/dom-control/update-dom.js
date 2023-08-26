@@ -11,6 +11,15 @@ class UpdateDom {
 
     }
 
+    static changeTaskImportance (isImportant) {
+        const starIcon = document.querySelector('.task-star-icon');
+        if (isImportant === true) {
+            starIcon.setAttribute('src', 'icons/star-colored.svg');
+        } else {
+            starIcon.setAttribute('src', 'icons/star-filled.svg');
+        }
+    }
+
     static changeElementText (elementToGrab, newText) {
         let element = document.querySelector(elementToGrab);
         element.textContent = newText;

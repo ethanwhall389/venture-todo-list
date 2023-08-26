@@ -5,8 +5,13 @@ import CurrentVenture, { venturesArray } from "./ventures";
 import AppendToDom from "./dom-control/append-to-dom.js";
 import UpdateDom from "./dom-control/update-dom.js";
 
+// let isTaskImportant = false;
 
 export default class UI {
+
+    constructor () {
+        this.isTaskImportant = false;
+    }
 
     static loadPage () {
         Venture.updatePage();
@@ -43,7 +48,7 @@ export default class UI {
             }
         })
     }
-
+    
     static newTaskBttn () {
 
         const venturePanel = document.querySelector('.venture-panel');
@@ -53,11 +58,13 @@ export default class UI {
         taskName.focus();
         taskName.value = '';
         taskNotes.value = '';
+        this.isTaskImportant = false;
 
         const dateInput = document.querySelector('.input-date');
         const currentDate = new Date();
         const formattedDate = format(currentDate, 'yyyy-MM-dd');
         dateInput.value = formattedDate;
+        
         
         bttnCancelTask.addEventListener('click', () => {
             formNewTask.style.display = 'none';
@@ -71,9 +78,24 @@ export default class UI {
 
     }
 
+    static changeTaskImportance () {
+        if (this.isTaskImportant === true) {
+            this.isTaskImportant = false;
+        } else {
+            this.isTaskImportant = true;
+        }
+        UpdateDom.changeTaskImportance(this.isTaskImportant);
+        console.log(`task is now important? ${this.isTaskImportant}`);
+    }
+
     static addTask (event) {
         event.preventDefault();
-        Task.createTask(taskName.value, taskDate.value, true, taskNotes.value);
+        const dateObject = new Date (taskDate.value)
+        console.log(taskDate.value);
+        console.log(typeof(taskDate.value));
+        console.log(dateObject);
+        const formattedTaskDate = format(dateObject, 'MM/dd/yy')
+        Task.createTask(taskName.value, formattedTaskDate, this.isTaskImportant, taskNotes.value);
         formNewTask.style.display = 'none';
 
     }
@@ -103,6 +125,10 @@ bttnNewTask.addEventListener('click', () => UI.newTaskBttn());
 
 const bttnSubmitTask = document.querySelector('.task-submit-bttn');
 bttnSubmitTask.addEventListener('click', (event) => UI.addTask(event));
+
+const bttnStarTask = document.querySelector('.task-star-icon');
+bttnStarTask.addEventListener('click', () => UI.changeTaskImportance())
+
 
 
 // Set and display the current venture when a venture is clicked in the sidebar.

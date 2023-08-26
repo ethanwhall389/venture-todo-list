@@ -60,9 +60,10 @@ class AppendToDom {
         let newTaskDueDate = document.createElement('p');
         newTaskDueDate.classList.add('task-due-date');
             //convert the date string back to a date object so we can format it how we want.
-        let dueDateObject = new Date();
-        let formattedDueDate = format(dueDateObject, 'mm/dd/yy');
-        newTaskDueDate.textContent = formattedDueDate;
+        // let dueDateObject = new Date(dueDate);
+        // console.log(dueDateObject);
+        // let formattedDueDate = format(dueDateObject, 'mm/dd/yy');
+        newTaskDueDate.textContent = dueDate;
 
         
         let options = document.createElement('img');
