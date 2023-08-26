@@ -35,30 +35,26 @@ export default class UI {
         })
     }
 
-    // FIX  BUG ADDING INCREMENTAL TASK DUPLICATES!
+    static newTaskBttn () {
 
-    static addNewTask () {
-
-        let formNewTask = document.querySelector('.new-task-form');
-        let taskName = document.querySelector('#task-name-input');
-        let taskNotes= document.querySelector('.task-form-notes');
-        let taskDate = document.querySelector('.input-date');
-        let bttnSubmitTask = document.querySelector('.task-submit-bttn');
-        let bttnCancelTask = document.querySelector('.task-cancel-bttn');
+        const venturePanel = document.querySelector('.venture-panel');
+        const bttnCancelTask = document.querySelector('.task-cancel-bttn');
 
         formNewTask.style.display = 'flex';
+        taskName.focus();
         taskName.value = '';
         taskNotes.value = '';
-
-        bttnSubmitTask.addEventListener('click', (event) => {
-            event.preventDefault();
-            Task.createTask(taskName.value, taskDate.value, true, taskNotes.value);
-            formNewTask.style.display = 'none';
-        })
         
         bttnCancelTask.addEventListener('click', () => {
             formNewTask.style.display = 'none';
         })
+    }
+
+    static addTask (event) {
+        event.preventDefault();
+        Task.createTask(taskName.value, taskDate.value, true, taskNotes.value);
+        formNewTask.style.display = 'none';
+
     }
 
     // Set and display the current venture when a venture is clicked in the sidebar.
@@ -73,8 +69,16 @@ const bttnNewVenture = document.querySelector('.new-venture-bttn');
 bttnNewVenture.addEventListener('click', () => UI.addNewVenture());
 
 
+const formNewTask = document.querySelector('.new-task-form');
+const taskName = document.querySelector('#task-name-input');
+const taskNotes= document.querySelector('.task-form-notes');
+const taskDate = document.querySelector('.input-date');
 const bttnNewTask = document.querySelector('.new-task-bttn');
-bttnNewTask.addEventListener('click', () => UI.addNewTask());
+bttnNewTask.addEventListener('click', () => UI.newTaskBttn());
+
+
+const bttnSubmitTask = document.querySelector('.task-submit-bttn');
+bttnSubmitTask.addEventListener('click', (event) => UI.addTask(event));
 
 
 // Set and display the current venture when a venture is clicked in the sidebar.
