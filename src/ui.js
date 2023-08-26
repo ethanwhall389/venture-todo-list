@@ -33,6 +33,14 @@ export default class UI {
             formNewVenture.style.display = 'none';
             newVentureInput.value = '';
         })
+
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                formNewVenture.style.display = 'none';
+                newVentureInput.value = '';
+            }
+        })
     }
 
     static newTaskBttn () {
@@ -48,6 +56,13 @@ export default class UI {
         bttnCancelTask.addEventListener('click', () => {
             formNewTask.style.display = 'none';
         })
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                formNewTask.style.display = 'none';
+            }
+        })
+
     }
 
     static addTask (event) {
@@ -147,6 +162,7 @@ document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
         if (isEditVentureOpen === true) {
             Venture.updatePage();
+            isEditVentureOpen = false;
         }
     }
 })
