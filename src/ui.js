@@ -96,6 +96,7 @@ export default class UI {
         console.log(dateObject);
         const formattedTaskDate = format(dateObject, 'MM/dd/yy')
         Task.createTask(taskName.value, formattedTaskDate, this.isTaskImportant, taskNotes.value);
+        UpdateDom.changeTaskImportance('false');
         formNewTask.style.display = 'none';
 
     }

@@ -12,7 +12,7 @@ class UpdateDom {
     }
 
     static changeTaskImportance (isImportant) {
-        const starIcon = document.querySelector('.task-star-icon');
+        const starIcon = document.querySelector('.date-and-priority img');
         if (isImportant === true) {
             starIcon.setAttribute('src', 'icons/star-colored.svg');
         } else {
@@ -46,7 +46,7 @@ class UpdateDom {
             let tasksArray = venturesArray[currentVentureIndex].tasks;
             if (tasksArray.length >= 1) {
                 tasksArray.forEach(element => {
-                    AppendToDom.appendTask(element.taskName, element.dueDate);
+                    AppendToDom.appendTask(element.taskName, element.dueDate, element.isImportant);
                 });
             }
         } else {

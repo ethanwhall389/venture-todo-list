@@ -43,7 +43,7 @@ class AppendToDom {
         ventureDiv.appendChild(ventureTitle);
     }
 
-    static appendTask (name, dueDate) {
+    static appendTask (name, dueDate, isImportant) {
         let newTaskDiv = document.createElement('div');
         newTaskDiv.classList.add('task-div');
         newTaskDiv.classList.add('task');
@@ -79,6 +79,16 @@ class AppendToDom {
         tasksContainer.appendChild(newTaskDiv);
         newTaskDiv.appendChild(checkBox);
         newTaskDiv.appendChild(newTaskTitle);
+        
+        if (isImportant) {
+            const newTaskImportant = document.createElement('img');
+            // newTaskImportant.classList.add('task-star-icon');
+            newTaskImportant.setAttribute('src', 'icons/star-colored.svg');
+            
+            newTaskDiv.appendChild(newTaskImportant);
+        } 
+
+
         newTaskDiv.appendChild(dateAndMenuDiv);
     }
 
