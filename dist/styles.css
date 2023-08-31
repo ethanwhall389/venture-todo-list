@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 
 .light-mode {
-    --main-bg-color: #C8EFF9;
-    --panel-color: #55Bdca;
-    --header-footer-color: #022449;
-    --main-font-color: white;
+    --main-bg-color: #ffffff;
+    --panel-color: #e3e3e3;
+    --header-footer-color: #022c58;
+    --main-font-color: rgb(0, 0, 0);
     --accent-color: #f27d42;
     --hover-accent-color: #f27d4289;
 }
@@ -22,12 +22,14 @@ body {
     gap: 20px;
     font-size: 20px;
     color: var(--main-font-color);
+    background-color: var(--main-bg-color);
     font-family: 'Lato', sans-serif;
     box-sizing: border-box;
 }
 
 header {
-    height: 50px;
+    color: white;
+    height: 60px;
     padding: 0 20px;
     background-color: var(--header-footer-color);
     display: flex;
@@ -69,7 +71,7 @@ header {
 /* new venture form */
 
 .form {
-    background-color: var(--header-footer-color);
+    background-color: var(--main-bg-color);
     padding: 15px;
     margin: 10px 0;
     border-radius: 10px;
@@ -135,21 +137,22 @@ header {
 .form-bttn {
     height: 30px;
     font-size: 0.8em;
-    color: var(--header-footer-color);
+    color: var(--main-font-color);
+    background-color: var(--panel-color);
     padding: 3px 10px;
     border: none;
     border-radius: 5px;
-    background-color: var(--main-font-color);
 }
 
 .venture-submit-bttn:hover, .task-submit-bttn:hover, .update-venture-bttn:hover {
     cursor: pointer;
-    background-color: var(--panel-color);
+    background-color: rgb(236, 236, 236);
 }
 
 .venture-cancel-bttn:hover, .task-cancel-bttn:hover {
     cursor: pointer;
-    background-color: var(--accent-color);
+    background-color: rgb(236, 236, 236);
+    color: var(--accent-color);
 }
 
 
@@ -159,7 +162,6 @@ header {
 .options-panel {
     width: 250px;
     max-width: 350px;
-    background-color: var(--panel-color);
     display: flex;
     flex-grow: 1;
     flex-direction: column;
@@ -221,7 +223,6 @@ hr {
 
 
 .venture-panel {
-    background-color: var(--panel-color);
     flex-grow: 1;
     min-width: 350px;
 }
@@ -299,11 +300,14 @@ hr {
 .panel {
     border-radius: 15px;
     padding: 15px 20px;
+    background-color: var(--panel-color);
+    box-shadow: 3px 4px 1px rgb(219, 219, 219);
 }
 
 
 
 footer {
+    color: white;
     height: 40px;
     background-color: var(--header-footer-color);
     display: flex;

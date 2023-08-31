@@ -21,10 +21,13 @@ Done--- Auto fill task due date with current date;
 Done--- Display the due date of the task.
 Done--- Allow task to be "starred" as important.
 Done--- Display whether the task is important.
+Done--- Allow users to complete tasks
+
 
 Allow users to edit tasks.
 clicking on tasks triggers the edit feature.
-Allow users to complete tasks
 Add local storage
+Tasks are organized by due date.
+Completed tasks are pushed to the bottom.
 
 
