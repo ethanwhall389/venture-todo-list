@@ -14,7 +14,7 @@ export default class UI {
     }
 
     static loadPage () {
-        Venture.updatePage();
+        UpdateDom.updatePage();
     }
 
     static addNewVenture () {
@@ -104,7 +104,7 @@ export default class UI {
     // Set and display the current venture when a venture is clicked in the sidebar.
     static displayVenture (clickEvent) {
         CurrentVenture.updateSelectedVenture(clickEvent.target.getAttribute('data-name'));
-        Venture.updatePage();
+        UpdateDom.updatePage();
     }
     
 }
@@ -129,6 +129,26 @@ bttnSubmitTask.addEventListener('click', (event) => UI.addTask(event));
 
 const bttnStarTask = document.querySelector('.task-star-icon');
 bttnStarTask.addEventListener('click', () => UI.changeTaskImportance())
+
+// const bttnCompleteTask = document.querySelectorAll('.task-checkbox');
+// bttnCompleteTask.forEach( (bttn) => {
+//     bttn.addEventListener('click', (event) => {
+//         console.log('check-box clicked');
+//         taskToComplete = event.target.getAttribute('data-name');
+//         Task.completeTask(taskToComplete);
+//         UpdateDom.updatePage();
+//     })
+// });
+
+// const bttnCompleteTask = document.querySelector('.task-checkbox');
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('task-checkbox')) {
+        console.log('check-box clicked');
+            const taskToComplete = event.target.getAttribute('data-name');
+            Task.completeTask(taskToComplete);
+            UpdateDom.updatePage();
+    }    
+})
 
 
 
@@ -198,7 +218,7 @@ document.addEventListener('click', (event) => {
 document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
         if (isEditVentureOpen === true) {
-            Venture.updatePage();
+            UpdateDom.updatePage();
             isEditVentureOpen = false;
         }
     }
@@ -212,7 +232,7 @@ document.addEventListener('click', (event) => {
         //change the array value in the selected venture.
         Venture.updateVentureName (updateInput.value);
         //update the page display
-        Venture.updatePage();
+        UpdateDom.updatePage();
     }
 })
 

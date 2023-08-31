@@ -1,11 +1,25 @@
 import { venturesArray } from "../ventures";
 import AppendToDom from "./append-to-dom";
+import CurrentVenture from "../ventures";
 
 const tasksContainer = document.querySelector('.tasks-section');
 
 
 class UpdateDom {
 
+    static updatePage () {
+        
+        this.displayVentures();
+        
+        if (venturesArray.length > 0) {
+            // CurrentVenture.updateSelectedVenture(venturesArray[ventureIndex].ventureName);
+            UpdateDom.changeElementText('.venture-panel-title', CurrentVenture.getCurrentSelectedVenture());
+            UpdateDom.displayTasks(CurrentVenture.getCurrentSelectedVenture());
+        } else {
+            UpdateDom.displayNoVentures();
+        }
+    }
+    
     static changeIcon (iconToGrab, newIconPath) {
         iconToGrab.setAttribute('src', newIconPath);
 
@@ -46,7 +60,7 @@ class UpdateDom {
             let tasksArray = venturesArray[currentVentureIndex].tasks;
             if (tasksArray.length >= 1) {
                 tasksArray.forEach(element => {
-                    AppendToDom.appendTask(element.taskName, element.dueDate, element.isImportant);
+                    AppendToDom.appendTask(element.taskName, element.dueDate, element.isImportant, element.isCompleted);
                 });
             }
         } else {

@@ -27,18 +27,6 @@ class Venture {
         }
     }
 
-    static updatePage () {
-        
-        UpdateDom.displayVentures();
-        
-        if (venturesArray.length > 0) {
-            // CurrentVenture.updateSelectedVenture(venturesArray[ventureIndex].ventureName);
-            UpdateDom.changeElementText('.venture-panel-title', CurrentVenture.getCurrentSelectedVenture());
-            UpdateDom.displayTasks(CurrentVenture.getCurrentSelectedVenture());
-        } else {
-            UpdateDom.displayNoVentures();
-        }
-    }
 
     static createVenture (ventureName) {
         venturesArray.push(new Venture (ventureName));
@@ -46,7 +34,7 @@ class Venture {
         //set currentSelectedVenture to the newly created venture
         CurrentVenture.updateSelectedVenture(ventureName);
     
-        this.updatePage();
+        UpdateDom.updatePage();
         
         //update venture panel DOM
         UpdateDom.changeElementText('.venture-panel-title', CurrentVenture.getCurrentSelectedVenture());
@@ -61,7 +49,7 @@ class Venture {
         let ventureIndex = venturesArray.findIndex((element) => element.ventureName === name);
         venturesArray.splice(ventureIndex, 1);
         ventureIndex -= 1;
-        this.updatePage();
+        UpdateDom.updatePage();
         if (ventureIndex > -1) {
             CurrentVenture.updateSelectedVenture(venturesArray[ventureIndex].ventureName);
             console.log(venturesArray);
@@ -69,7 +57,7 @@ class Venture {
             return;
         }
         
-        this.updatePage();
+        UpdateDom.updatePage();
         
     }
 }

@@ -43,7 +43,7 @@ class AppendToDom {
         ventureDiv.appendChild(ventureTitle);
     }
 
-    static appendTask (name, dueDate, isImportant) {
+    static appendTask (name, dueDate, isImportant, isCompleted) {
         let newTaskDiv = document.createElement('div');
         newTaskDiv.classList.add('task-div');
         newTaskDiv.classList.add('task');
@@ -51,10 +51,12 @@ class AppendToDom {
 
         let checkBox = document.createElement('div');
         checkBox.classList.add('task-checkbox');
+        checkBox.setAttribute('data-name', name);
         
         let newTaskTitle = document.createElement('p');
         newTaskTitle.classList.add('task');
         newTaskTitle.textContent = name;
+        isCompleted === true ? newTaskTitle.style.textDecoration = "line-through" : null;
         newTaskTitle.setAttribute('data-name', name);
 
 
