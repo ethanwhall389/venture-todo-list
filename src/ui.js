@@ -170,6 +170,7 @@ window.addEventListener('contextmenu', (event) => {
     }
     //remove spaces from the data name attribute
     dataName = event.target.getAttribute('data-name');
+    console.log(dataName);
 
 })
 

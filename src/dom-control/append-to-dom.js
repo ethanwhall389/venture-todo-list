@@ -51,11 +51,12 @@ class AppendToDom {
 
         let checkBox = document.createElement('div');
         checkBox.classList.add('task-checkbox');
-        checkBox.classList.add('task');
         
         let newTaskTitle = document.createElement('p');
         newTaskTitle.classList.add('task');
         newTaskTitle.textContent = name;
+        newTaskTitle.setAttribute('data-name', name);
+
 
         let newTaskDueDate = document.createElement('p');
         newTaskDueDate.classList.add('task-due-date');
@@ -69,7 +70,6 @@ class AppendToDom {
         let options = document.createElement('img');
         options.setAttribute('src', 'icons/dots-vertical.svg');
         options.classList.add('task-menu');
-        options.classList.add('task');
         
         const dateAndMenuDiv = document.createElement('div');
         dateAndMenuDiv.classList.add('date-menu-div');
