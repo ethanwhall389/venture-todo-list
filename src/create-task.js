@@ -24,6 +24,10 @@ class Task {
         this.notes = newNotes;
     }
 
+    updateIsImportant () {
+
+    }
+
     updateCompleted () {
         this.isCompleted === true ? this.isCompleted = false : this.isCompleted = true;
     }
@@ -53,6 +57,16 @@ class Task {
     
         UpdateDom.displayTasks(CurrentVenture.getCurrentSelectedVenture());
     } 
+
+    static editTask (name, dueDate, important, notes) {
+        let currentVentureIndex = venturesArray.findIndex((element) => element.ventureName === CurrentVenture.getCurrentSelectedVenture());
+        let taskIndex = venturesArray[currentVentureIndex].tasks.findIndex((element) => element.taskName === name);
+
+        venturesArray[currentVentureIndex].tasks[taskIndex].updateTaskName(name);
+        venturesArray[currentVentureIndex].tasks[taskIndex].updateDueDate(dueDate);
+        venturesArray[currentVentureIndex].tasks[taskIndex].updateIsImportant(important);
+        venturesArray[currentVentureIndex].tasks[taskIndex].updateNotes(notes);
+    }
 
     static completeTask (name) {
         let currentVentureIndex = venturesArray.findIndex((element) => element.ventureName === CurrentVenture.getCurrentSelectedVenture());

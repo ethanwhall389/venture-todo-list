@@ -55,9 +55,9 @@ export default class UI {
         const bttnCancelTask = document.querySelector('.task-cancel-bttn');
 
         formNewTask.style.display = 'flex';
-        taskName.focus();
-        taskName.value = '';
-        taskNotes.value = '';
+        taskNameInput.focus();
+        taskNameInput.value = '';
+        taskNotesInput.value = '';
         this.isTaskImportant = false;
 
         const dateInput = document.querySelector('.input-date');
@@ -78,6 +78,23 @@ export default class UI {
 
     }
 
+    static editTask (event) {
+        formNewTask.style.display = 'flex';
+
+        let dataName = event.target.getAttribute('data-name');
+        
+        let currentVentureIndex = venturesArray.findIndex((element) => element.ventureName === CurrentVenture.getCurrentSelectedVenture());
+        let taskIndex = venturesArray[currentVentureIndex].tasks.findIndex((element) => element.taskName === dataName);
+
+        taskNameInput.value = venturesArray[currentVentureIndex].tasks[taskIndex].taskName;
+        taskNotesInput.value = venturesArray[currentVentureIndex].tasks[taskIndex].notes;
+        taskDate.value = venturesArray[currentVentureIndex].tasks[taskIndex].dueDate;
+
+        submitBttn = document.querySelector('.task-submit-bttn');
+        submitBttn.value = 'Update';
+
+    }
+
     static changeTaskImportance () {
         if (this.isTaskImportant === true) {
             this.isTaskImportant = false;
@@ -95,7 +112,7 @@ export default class UI {
         console.log(typeof(taskDate.value));
         console.log(dateObject);
         const formattedTaskDate = format(dateObject, 'MM/dd/yy')
-        Task.createTask(taskName.value, formattedTaskDate, this.isTaskImportant, taskNotes.value);
+        Task.createTask(taskNameInput.value, formattedTaskDate, this.isTaskImportant, taskNotesInput.value);
         UpdateDom.changeTaskImportance('false');
         formNewTask.style.display = 'none';
 
@@ -117,12 +134,19 @@ const formNewTask = document.querySelector('.new-task-form');
 
 
 
-const taskName = document.querySelector('#task-name-input');
-const taskNotes= document.querySelector('.task-form-notes');
+const taskNameInput = document.querySelector('#task-name-input');
+const taskNotesInput= document.querySelector('.task-form-notes');
 const taskDate = document.querySelector('.input-date');
 const bttnNewTask = document.querySelector('.new-task-bttn');
 bttnNewTask.addEventListener('click', () => UI.newTaskBttn());
 
+
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('edit-task')) {
+        console.log('edit clicked');
+        UI.editTask(event)
+    }
+})
 
 const bttnSubmitTask = document.querySelector('.task-submit-bttn');
 bttnSubmitTask.addEventListener('click', (event) => UI.addTask(event));
