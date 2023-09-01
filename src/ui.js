@@ -78,10 +78,8 @@ export default class UI {
 
     }
 
-    static editTask (event) {
+    static editTask (dataName) {
         formNewTask.style.display = 'flex';
-
-        let dataName = event.target.getAttribute('data-name');
         
         let currentVentureIndex = venturesArray.findIndex((element) => element.ventureName === CurrentVenture.getCurrentSelectedVenture());
         let taskIndex = venturesArray[currentVentureIndex].tasks.findIndex((element) => element.taskName === dataName);
@@ -90,8 +88,16 @@ export default class UI {
         taskNotesInput.value = venturesArray[currentVentureIndex].tasks[taskIndex].notes;
         taskDate.value = venturesArray[currentVentureIndex].tasks[taskIndex].dueDate;
 
-        submitBttn = document.querySelector('.task-submit-bttn');
+        const submitBttn = document.querySelector('.task-submit-bttn');
         submitBttn.value = 'Update';
+
+        submitBttn.addEventListener('click', (event) => {
+            event.preventDefault();
+            venturesArray[currentVentureIndex].tasks[taskIndex].updateTaskName(taskNameInput.value);
+            venturesArray[currentVentureIndex].tasks[taskIndex].updateDueDate(taskDate.value);
+            venturesArray[currentVentureIndex].tasks[taskIndex].updateNotes(taskNotesInput.value);
+            UpdateDom.updatePage();
+        })
 
     }
 
@@ -144,7 +150,7 @@ bttnNewTask.addEventListener('click', () => UI.newTaskBttn());
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('edit-task')) {
         console.log('edit clicked');
-        UI.editTask(event)
+        UI.editTask(dataName);
     }
 })
 
