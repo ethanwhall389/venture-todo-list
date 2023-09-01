@@ -56,9 +56,15 @@ class AppendToDom {
         let newTaskTitle = document.createElement('p');
         newTaskTitle.classList.add('task');
         newTaskTitle.textContent = name;
-        isCompleted === true ? newTaskTitle.style.textDecoration = "line-through" : null;
         newTaskTitle.setAttribute('data-name', name);
+        
+        // isCompleted === true ? newTaskTitle.style.textDecoration = "line-through" : null;
 
+        if (isCompleted) {
+            newTaskDiv.style.backgroundColor = '#6786a8'
+            newTaskTitle.style.textDecoration = 'line-through';
+            checkBox.style.backgroundColor = 'var(--main-bg-color)';  
+        }
 
         let newTaskDueDate = document.createElement('p');
         newTaskDueDate.classList.add('task-due-date');
@@ -113,7 +119,7 @@ class AppendToDom {
         })
 
         menuDiv.style.display = 'block';
-        menuDiv.style.left = mouseX + 'px';
+        menuDiv.style.left = (mouseX - 85) + 'px';
         menuDiv.style.top = mouseY + 'px';
 
         this.toggleIsMenu();
