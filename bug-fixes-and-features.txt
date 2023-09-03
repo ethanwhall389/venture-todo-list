@@ -5,6 +5,8 @@ Done--- Cannot rename venture's when their name contains a space
 Done--- When deleting tasks, it deletes wichever one was last selected, regardless of which one I right click on.
 
 
+When I try to edit a task for the second time, it throws an error.
+
 tasks are being displayed with their due date a day too early.
     I think this has to do with a time zone issue when converting a date string to an object.
 

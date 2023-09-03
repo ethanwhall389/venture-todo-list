@@ -81,6 +81,12 @@ export default class UI {
     static editTask (dataName) {
         formNewTask.style.display = 'flex';
         
+        const addTaskBttn = document.querySelector('.task-submit-bttn');
+        const updateTaskBttn = document.querySelector('.task-update-bttn');
+
+        addTaskBttn.style.display = 'none';
+        updateTaskBttn.style.display = 'block';
+
         let currentVentureIndex = venturesArray.findIndex((element) => element.ventureName === CurrentVenture.getCurrentSelectedVenture());
         let taskIndex = venturesArray[currentVentureIndex].tasks.findIndex((element) => element.taskName === dataName);
 
@@ -88,14 +94,14 @@ export default class UI {
         taskNotesInput.value = venturesArray[currentVentureIndex].tasks[taskIndex].notes;
         taskDate.value = venturesArray[currentVentureIndex].tasks[taskIndex].dueDate;
 
-        const submitBttn = document.querySelector('.task-submit-bttn');
-        submitBttn.value = 'Update';
 
-        submitBttn.addEventListener('click', (event) => {
-            event.preventDefault();
+        updateTaskBttn.addEventListener('click', (event) => {
             venturesArray[currentVentureIndex].tasks[taskIndex].updateTaskName(taskNameInput.value);
             venturesArray[currentVentureIndex].tasks[taskIndex].updateDueDate(taskDate.value);
             venturesArray[currentVentureIndex].tasks[taskIndex].updateNotes(taskNotesInput.value);
+            updateTaskBttn.style.display = 'none';
+            addTaskBttn.style.display = 'block';
+            formNewTask.style.display = 'none';
             UpdateDom.updatePage();
         })
 
