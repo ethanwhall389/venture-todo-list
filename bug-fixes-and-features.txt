@@ -25,12 +25,12 @@ Done--- Allow task to be "starred" as important.
 Done--- Display whether the task is important.
 Done--- Allow users to complete tasks
 Done--- When a task is completed the checkbox is filled with white.
+Done--- clicking on tasks triggers the edit feature.
+Done--- Allow users to edit tasks.
 
-
-!!!Allow users to edit tasks.
+When editing a task, the edit form should pop up in the same place the old task was.
 Show how many tasks are inside each venture directly on the venture button
 responsive to small screens.
-clicking on tasks triggers the edit feature.
 Make folder icon opened on selected venture.
 Add local storage
 Tasks are organized by due date.

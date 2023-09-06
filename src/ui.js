@@ -68,6 +68,7 @@ export default class UI {
         
         bttnCancelTask.addEventListener('click', () => {
             formNewTask.style.display = 'none';
+            UpdateDom.updatePage();
         })
 
         document.addEventListener('keydown', (event) => {
@@ -80,6 +81,13 @@ export default class UI {
 
     static editTask (dataName) {
         formNewTask.style.display = 'flex';
+
+        const taskDivs = document.querySelectorAll('.task-div');
+        taskDivs.forEach( (task) => {
+            if (task.getAttribute('data-name') === dataName) {
+                task.style.display = 'none';
+            }
+        })
         
         const addTaskBttn = document.querySelector('.task-submit-bttn');
         const updateTaskBttn = document.querySelector('.task-update-bttn');
@@ -153,12 +161,18 @@ const bttnNewTask = document.querySelector('.new-task-bttn');
 bttnNewTask.addEventListener('click', () => UI.newTaskBttn());
 
 
+//Edit task if 
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('edit-task')) {
         console.log('edit clicked');
         UI.editTask(dataName);
+    } else if (event.target.classList.contains('task')) {
+        console.log('edit clicked');
+        dataName = event.target.getAttribute('data-name');
+        UI.editTask(dataName);
     }
 })
+
 
 const bttnSubmitTask = document.querySelector('.task-submit-bttn');
 bttnSubmitTask.addEventListener('click', (event) => UI.addTask(event));
@@ -224,7 +238,6 @@ window.addEventListener('contextmenu', (event) => {
         event.preventDefault();
         AppendToDom.createOptionsMenu(event.clientX, event.clientY, ['Edit', 'Delete'], 'task');
     }
-    //remove spaces from the data name attribute
     dataName = event.target.getAttribute('data-name');
     console.log(dataName);
 
