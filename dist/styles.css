@@ -49,6 +49,10 @@ header {
     flex-grow: 1;
 }
 
+.view-ventures-bttn-mobile {
+    display: none;
+}
+
 /* Right click menu */
 
 .options-menu-div {
@@ -325,4 +329,71 @@ a, a:link, a:visited {
 
 a:hover {
     text-decoration: none;
+}
+
+
+
+/* RESPONSIVE TO SMALL SCREENS */
+
+@media (max-width: 650px) {
+    
+    .main-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        margin: 0 50px;
+    }
+
+    .view-ventures-bttn-mobile {
+        display: block;
+        background-color: var(--panel-color);
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .view-ventures-bttn-mobile:active {
+        background-color: var(--main-bg-color);
+    }
+
+    .options-panel {
+        display: none;
+    }
+
+    .panel {
+        width: 100%;
+        max-width: none;
+        min-width: 150px;
+        margin: 0 50px;
+        flex-grow: 1;
+    }
+
+    header {
+        justify-content: center;
+    }
+
+    .bttn {
+        background-color: var(--main-bg-color);
+    }
+
+    .bttn:active {
+        background-color: var(--panel-color);
+    }
+
+    .form-bttn:active {
+        background-color: var(--main-bg-color);
+    }
+
+    .new-venture-bttn {
+        margin-top: 10px;
+    }
+
+    .form-bttn {
+        width: 100px;
+        height: 40px;
+        font-size: 0.9em;
+    }
+
+
+
+
 }

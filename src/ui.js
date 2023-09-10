@@ -143,6 +143,17 @@ export default class UI {
         CurrentVenture.updateSelectedVenture(clickEvent.target.getAttribute('data-name'));
         UpdateDom.updatePage();
     }
+
+        //for mobile only
+    static displayOptionsPanel () {
+        const optionsPanel = document.querySelector('.options-panel');
+        const computedStyle = window.getComputedStyle(optionsPanel);
+        if (computedStyle.display === 'none') {
+            optionsPanel.style.display = 'block';
+        } else {
+            optionsPanel.style.display = 'none';
+        }
+    }
     
 }
 
@@ -294,3 +305,10 @@ window.addEventListener('click', (event) => {
         //display the title again (will have to update it?).
     }
 });
+
+//view ventures button (for mobile only) 
+const viewVenturesBttn = document.querySelector('.view-ventures-bttn-mobile');
+
+viewVenturesBttn.addEventListener('click', () => {
+    UI.displayOptionsPanel();
+})
