@@ -82,12 +82,22 @@ export default class UI {
     static editTask (dataName) {
         formNewTask.style.display = 'flex';
 
+        let indexOfEditedTask = 0;
         const taskDivs = document.querySelectorAll('.task-div');
-        taskDivs.forEach( (task) => {
-            if (task.getAttribute('data-name') === dataName) {
-                task.style.display = 'none';
+
+        for (let i = 0; i < taskDivs.length; i++) {
+            if (taskDivs[i].getAttribute('data-name') === dataName) {
+                taskDivs[i].style.display = 'none';
+                indexOfEditedTask = i;
+                console.log(`index of edited task: ${i}`);
             }
-        })
+        }
+
+        // taskDivs.forEach( (task) => {
+        //     if (task.getAttribute('data-name') === dataName) {
+        //         task.style.display = 'none';
+        //     }
+        // })
         
         const addTaskBttn = document.querySelector('.task-submit-bttn');
         const updateTaskBttn = document.querySelector('.task-update-bttn');
