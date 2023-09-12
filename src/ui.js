@@ -147,11 +147,14 @@ export default class UI {
         //for mobile only
     static displayOptionsPanel () {
         const optionsPanel = document.querySelector('.options-panel');
+        const displayPanelBttn = document.querySelector('.view-ventures-bttn-mobile');
         const computedStyle = window.getComputedStyle(optionsPanel);
         if (computedStyle.display === 'none') {
             optionsPanel.style.display = 'block';
+            displayPanelBttn.textContent = 'Hide Ventures';
         } else {
             optionsPanel.style.display = 'none';
+            displayPanelBttn.textContent = 'Show Ventures';
         }
     }
     
