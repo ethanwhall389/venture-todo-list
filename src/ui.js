@@ -52,7 +52,6 @@ export default class UI {
     static newTaskBttn () {
 
         const venturePanel = document.querySelector('.venture-panel');
-        const bttnCancelTask = document.querySelector('.task-cancel-bttn');
 
         // formNewTask.style.display = 'flex';
         AppendToDom.createNewTaskForm();
@@ -60,12 +59,10 @@ export default class UI {
 
         const taskNameInput = document.querySelector('#task-name-input');
         const taskNotesInput= document.querySelector('.task-form-notes');
-        const taskDate = document.querySelector('.input-date');
+        const bttnCancelTask = document.querySelector('.task-cancel-bttn');
 
 
         taskNameInput.focus();
-        taskNameInput.value = '';
-        taskNotesInput.value = '';
         this.isTaskImportant = false;
 
         const dateInput = document.querySelector('.input-date');
@@ -75,15 +72,23 @@ export default class UI {
         
         
         bttnCancelTask.addEventListener('click', () => {
-            formNewTask.style.display = 'none';
+            AppendToDom.removeNewTaskForm();
             UpdateDom.updatePage();
         })
 
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
-                formNewTask.style.display = 'none';
+                AppendToDom.removeNewTaskForm();
+                UpdateDom.updatePage();
             }
         })
+
+        //Submit task bttn
+        document.addEventListener('click', (event) => {
+            if (event.target.classList.contains('task-submit-bttn')) {
+            UI.addTask(event, taskNameInput, taskNotesInput, dateInput);
+    }
+})
 
     }
 
@@ -138,16 +143,17 @@ export default class UI {
         console.log(`task is now important? ${this.isTaskImportant}`);
     }
 
-    static addTask (event) {
+    static addTask (event, taskName, taskNotes, taskDate) {
         event.preventDefault();
         const dateObject = new Date (taskDate.value)
         console.log(taskDate.value);
         console.log(typeof(taskDate.value));
         console.log(dateObject);
         const formattedTaskDate = format(dateObject, 'MM/dd/yy')
-        Task.createTask(taskNameInput.value, formattedTaskDate, this.isTaskImportant, taskNotesInput.value);
-        UpdateDom.changeTaskImportance('false');
-        formNewTask.style.display = 'none';
+        Task.createTask(taskName.value, formattedTaskDate, this.isTaskImportant, taskNotes.value);
+        AppendToDom.removeNewTaskForm();
+        UpdateDom.updatePage();
+        
 
     }
 
@@ -200,12 +206,12 @@ document.addEventListener('click', (event) => {
     }
 })
 
-//Submit task bttn
-document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('task-submit-bttn')) {
-        UI.addTask(event);
-    }
-})
+// //Submit task bttn
+// document.addEventListener('click', (event) => {
+//     if (event.target.classList.contains('task-submit-bttn')) {
+//         UI.addTask(event);
+//     }
+// })
 
 // const bttnSubmitTask = document.querySelector('.task-submit-bttn');
 // bttnSubmitTask.addEventListener('click', (event) => UI.addTask(event));

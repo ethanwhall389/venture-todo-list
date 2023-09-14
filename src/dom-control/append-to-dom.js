@@ -108,6 +108,14 @@ class AppendToDom {
         venturePanel.appendChild(formClone);
     }
 
+    static removeNewTaskForm () {
+        const venturePanel = document.querySelector('.venture-panel');
+        const taskForm = document.querySelector('.new-task-form');
+
+        venturePanel.removeChild(taskForm);
+
+    }
+
     static createOptionsMenu (mouseX, mouseY, arrayOfOptions, type) {
         this.closeOptionsMenu();
         const menuDiv = document.createElement('div');
