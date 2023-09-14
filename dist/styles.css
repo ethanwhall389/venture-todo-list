@@ -90,7 +90,7 @@ header {
 }
 
 .new-task-form {
-    display: none;
+    /* display: none; */
     flex-direction: column;
     gap: 15px;
 }

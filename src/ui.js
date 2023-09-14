@@ -54,7 +54,15 @@ export default class UI {
         const venturePanel = document.querySelector('.venture-panel');
         const bttnCancelTask = document.querySelector('.task-cancel-bttn');
 
-        formNewTask.style.display = 'flex';
+        // formNewTask.style.display = 'flex';
+        AppendToDom.createNewTaskForm();
+
+
+        const taskNameInput = document.querySelector('#task-name-input');
+        const taskNotesInput= document.querySelector('.task-form-notes');
+        const taskDate = document.querySelector('.input-date');
+
+
         taskNameInput.focus();
         taskNameInput.value = '';
         taskNotesInput.value = '';
@@ -93,11 +101,6 @@ export default class UI {
             }
         }
 
-        // taskDivs.forEach( (task) => {
-        //     if (task.getAttribute('data-name') === dataName) {
-        //         task.style.display = 'none';
-        //     }
-        // })
         
         const addTaskBttn = document.querySelector('.task-submit-bttn');
         const updateTaskBttn = document.querySelector('.task-update-bttn');
@@ -178,9 +181,9 @@ const formNewTask = document.querySelector('.new-task-form');
 
 
 
-const taskNameInput = document.querySelector('#task-name-input');
-const taskNotesInput= document.querySelector('.task-form-notes');
-const taskDate = document.querySelector('.input-date');
+// const taskNameInput = document.querySelector('#task-name-input');
+// const taskNotesInput= document.querySelector('.task-form-notes');
+// const taskDate = document.querySelector('.input-date');
 const bttnNewTask = document.querySelector('.new-task-bttn');
 bttnNewTask.addEventListener('click', () => UI.newTaskBttn());
 
@@ -197,12 +200,25 @@ document.addEventListener('click', (event) => {
     }
 })
 
+//Submit task bttn
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('task-submit-bttn')) {
+        UI.addTask(event);
+    }
+})
 
-const bttnSubmitTask = document.querySelector('.task-submit-bttn');
-bttnSubmitTask.addEventListener('click', (event) => UI.addTask(event));
+// const bttnSubmitTask = document.querySelector('.task-submit-bttn');
+// bttnSubmitTask.addEventListener('click', (event) => UI.addTask(event));
 
-const bttnStarTask = document.querySelector('.task-star-icon');
-bttnStarTask.addEventListener('click', () => UI.changeTaskImportance())
+//Task star bttn
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('task-star-icon')) {
+        UI.changeTaskImportance();
+    }
+})
+
+// const bttnStarTask = document.querySelector('.task-star-icon');
+// bttnStarTask.addEventListener('click', () => UI.changeTaskImportance())
 
 // const bttnCompleteTask = document.querySelectorAll('.task-checkbox');
 // bttnCompleteTask.forEach( (bttn) => {

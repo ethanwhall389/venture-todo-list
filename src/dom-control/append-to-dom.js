@@ -100,6 +100,14 @@ class AppendToDom {
         newTaskDiv.appendChild(dateAndMenuDiv);
     }
 
+    static createNewTaskForm () {
+        const formTemplate = document.getElementById('new-task-form-template');
+        const formClone = document.importNode(formTemplate.content, true);
+
+        const venturePanel = document.querySelector('.venture-panel');
+        venturePanel.appendChild(formClone);
+    }
+
     static createOptionsMenu (mouseX, mouseY, arrayOfOptions, type) {
         this.closeOptionsMenu();
         const menuDiv = document.createElement('div');
