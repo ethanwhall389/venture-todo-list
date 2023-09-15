@@ -83,17 +83,33 @@ export default class UI {
             }
         })
 
-        //Submit task bttn
-        document.addEventListener('click', (event) => {
-            if (event.target.classList.contains('task-submit-bttn')) {
-            UI.addTask(event, taskNameInput, taskNotesInput, dateInput);
+        // //Submit task bttn
+        // document.addEventListener('click', (event) => {
+        //     if (event.target.classList.contains('task-submit-bttn')) {
+        //     UI.addTask(event, taskNameInput, taskNotesInput, dateInput);
+        //     AppendToDom.removeNewTaskForm();
+        //     UpdateDom.updatePage();
+        //     }
+        // })
     }
-})
 
+    static submitTask (event) {
+        const taskNameInput = document.querySelector('#task-name-input');
+        const taskNotesInput= document.querySelector('.task-form-notes');
+        const dateInput = document.querySelector('.input-date');
+
+        UI.addTask(event, taskNameInput, taskNotesInput, dateInput);
+
+        AppendToDom.removeNewTaskForm();
+        UpdateDom.updatePage();
     }
 
     static editTask (dataName) {
-        formNewTask.style.display = 'flex';
+        AppendToDom.createNewTaskForm();
+
+        const taskNameInput = document.querySelector('#task-name-input');
+        const taskNotesInput= document.querySelector('.task-form-notes');
+
 
         let indexOfEditedTask = 0;
         const taskDivs = document.querySelectorAll('.task-div');
@@ -151,8 +167,6 @@ export default class UI {
         console.log(dateObject);
         const formattedTaskDate = format(dateObject, 'MM/dd/yy')
         Task.createTask(taskName.value, formattedTaskDate, this.isTaskImportant, taskNotes.value);
-        AppendToDom.removeNewTaskForm();
-        UpdateDom.updatePage();
         
 
     }
@@ -192,6 +206,12 @@ const formNewTask = document.querySelector('.new-task-form');
 // const taskDate = document.querySelector('.input-date');
 const bttnNewTask = document.querySelector('.new-task-bttn');
 bttnNewTask.addEventListener('click', () => UI.newTaskBttn());
+
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('task-submit-bttn')) {
+        UI.submitTask(event);
+    }
+})
 
 
 //Edit task if 
