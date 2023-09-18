@@ -109,6 +109,7 @@ export default class UI {
 
         const taskNameInput = document.querySelector('#task-name-input');
         const taskNotesInput= document.querySelector('.task-form-notes');
+        const taskDate = document.querySelector('.input-date');
 
 
         let indexOfEditedTask = 0;
@@ -123,11 +124,10 @@ export default class UI {
         }
 
         
-        const addTaskBttn = document.querySelector('.task-submit-bttn');
-        const updateTaskBttn = document.querySelector('.task-update-bttn');
-
-        addTaskBttn.style.display = 'none';
-        updateTaskBttn.style.display = 'block';
+        const updateTaskBttn = document.querySelector('.task-submit-bttn');
+        updateTaskBttn.classList.remove('task-submit-bttn');
+        updateTaskBttn.classList.add('task-update-bttn');
+        updateTaskBttn.setAttribute('value', 'Update');
 
         let currentVentureIndex = venturesArray.findIndex((element) => element.ventureName === CurrentVenture.getCurrentSelectedVenture());
         let taskIndex = venturesArray[currentVentureIndex].tasks.findIndex((element) => element.taskName === dataName);
@@ -138,12 +138,11 @@ export default class UI {
 
 
         updateTaskBttn.addEventListener('click', (event) => {
+            event.preventDefault();
             venturesArray[currentVentureIndex].tasks[taskIndex].updateTaskName(taskNameInput.value);
             venturesArray[currentVentureIndex].tasks[taskIndex].updateDueDate(taskDate.value);
             venturesArray[currentVentureIndex].tasks[taskIndex].updateNotes(taskNotesInput.value);
-            updateTaskBttn.style.display = 'none';
-            addTaskBttn.style.display = 'block';
-            formNewTask.style.display = 'none';
+            AppendToDom.removeNewTaskForm();
             UpdateDom.updatePage();
         })
 
