@@ -3,9 +3,9 @@ BUG FIXES NEEDED
 
 Done--- Cannot rename venture's when their name contains a space
 Done--- When deleting tasks, it deletes wichever one was last selected, regardless of which one I right click on.
+Done--- When I try to edit a task for the second time, it throws an error.
 
 
-When I try to edit a task for the second time, it throws an error.
 
 tasks are being displayed with their due date a day too early.
     I think this has to do with a time zone issue when converting a date string to an object.
@@ -28,12 +28,13 @@ Done--- When a task is completed the checkbox is filled with white.
 Done--- clicking on tasks triggers the edit feature.
 Done--- Allow users to edit tasks.
 
-When editing a task, the star feature needs to be editable.
+Add local storage
 When editing a task, the edit form should pop up in the same place the old task was.
+When editing a task, the star feature needs to be editable.
+
 Show how many tasks are inside each venture directly on the venture button
 responsive to small screens.
 Make folder icon opened on selected venture.
-Add local storage
 Tasks are organized by due date.
 Completed tasks are pushed to the bottom.
 Dark mode?
